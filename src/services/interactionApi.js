@@ -1,11 +1,11 @@
 const API_URL = (import.meta.env.VITE_INTERACTION_API_URL || "").replace(/\/$/, "")
 
-async function requestJson(path) {
+async function requestJson(path, options = {}) {
   if (!API_URL) {
     throw new Error("Chưa cấu hình VITE_INTERACTION_API_URL")
   }
 
-  const response = await fetch(`${API_URL}${path}`)
+  const response = await fetch(`${API_URL}${path}`, options)
   const data = await response.json().catch(() => ({}))
 
   if (!response.ok) {
@@ -38,4 +38,10 @@ export async function fetchInteractionEvents(sessionId, { limit = 1000 } = {}) {
 
   const data = await requestJson(`/api/interaction/sessions/${encodeURIComponent(sessionId)}/events?${params.toString()}`)
   return data.events || []
+}
+
+export async function deleteInteractionSession(sessionId) {
+  return requestJson(`/api/interaction/sessions/${encodeURIComponent(sessionId)}`, {
+    method: "DELETE",
+  })
 }

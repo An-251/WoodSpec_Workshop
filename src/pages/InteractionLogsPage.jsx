@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react"
-import { Activity, Database, MousePointerClick, RefreshCcw, Route, Search } from "lucide-react"
+import { Activity, Database, MousePointerClick, RefreshCcw, Route, Search, Trash2 } from "lucide-react"
 
 import {
+  deleteInteractionSession,
   fetchInteractionEvents,
   fetchInteractionSessions,
   getInteractionApiUrl,
@@ -61,6 +62,7 @@ function InteractionLogsPage() {
   const [emailFilter, setEmailFilter] = useState("")
   const [loadingSessions, setLoadingSessions] = useState(false)
   const [loadingEvents, setLoadingEvents] = useState(false)
+  const [deletingSessionId, setDeletingSessionId] = useState("")
   const [error, setError] = useState("")
   const configured = isInteractionApiConfigured()
 
@@ -86,7 +88,9 @@ function InteractionLogsPage() {
     try {
       const nextSessions = await fetchInteractionSessions({ email: emailFilter, limit: 100 })
       setSessions(nextSessions)
-      setSelectedSessionId((current) => current || nextSessions[0]?.sessionId || "")
+      setSelectedSessionId((current) =>
+        nextSessions.some((session) => session.sessionId === current) ? current : nextSessions[0]?.sessionId || "",
+      )
     } catch (nextError) {
       setError(nextError.message)
     } finally {
@@ -129,6 +133,28 @@ function InteractionLogsPage() {
     event.preventDefault()
     setSelectedSessionId("")
     loadSessions()
+  }
+
+  const handleDeleteSession = async (session) => {
+    const accepted = window.confirm(`Xóa log phiên ${session.sessionId}?`)
+    if (!accepted) return
+
+    setDeletingSessionId(session.sessionId)
+    setError("")
+
+    try {
+      await deleteInteractionSession(session.sessionId)
+      setSessions((currentSessions) => currentSessions.filter((item) => item.sessionId !== session.sessionId))
+
+      if (selectedSessionId === session.sessionId) {
+        setSelectedSessionId("")
+        setEvents([])
+      }
+    } catch (nextError) {
+      setError(nextError.message)
+    } finally {
+      setDeletingSessionId("")
+    }
   }
 
   if (!configured) {
@@ -196,10 +222,8 @@ function InteractionLogsPage() {
               const status = getSessionStatus(session)
 
               return (
-                <button
+                <div
                   key={session.sessionId}
-                  type="button"
-                  onClick={() => setSelectedSessionId(session.sessionId)}
                   className={`w-full rounded-[13px] border p-3 text-left ${
                     selectedSessionId === session.sessionId
                       ? "border-[#854f19] bg-[#fff1e8]"
@@ -207,19 +231,33 @@ function InteractionLogsPage() {
                   }`}
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
+                    <button type="button" onClick={() => setSelectedSessionId(session.sessionId)} className="min-w-0 flex-1 text-left">
                       <p className="truncate text-[14px] font-bold text-[#231a11]">{session.email}</p>
                       <p className="mt-1 truncate text-[12px] text-[#8a796b]">{session.sessionId}</p>
-                    </div>
+                    </button>
                     <span className={`shrink-0 rounded-full border px-2 py-1 text-[11px] font-bold ${status.tone}`}>
                       {status.label}
                     </span>
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteSession(session)}
+                      disabled={deletingSessionId === session.sessionId}
+                      aria-label="Xóa log phiên"
+                      title="Xóa log phiên"
+                      className="grid size-8 shrink-0 place-items-center rounded-[10px] border border-red-200 text-red-600 transition hover:bg-red-50 disabled:cursor-wait disabled:opacity-60"
+                    >
+                      <Trash2 size={15} />
+                    </button>
                   </div>
-                  <div className="mt-2 flex items-center justify-between gap-3 text-[12px] text-[#52443a]">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedSessionId(session.sessionId)}
+                    className="mt-2 flex w-full items-center justify-between gap-3 text-left text-[12px] text-[#52443a]"
+                  >
                     <span>{formatDate(session.loginAt || session.createdAt)}</span>
                     <span className="font-bold">{session.eventCount || 0} event</span>
-                  </div>
-                </button>
+                  </button>
+                </div>
               )
             })}
 

@@ -287,6 +287,10 @@ function InteractionLogsPage() {
                   <p className="mt-1 font-semibold text-[#231a11]">{selectedSession.email}</p>
                 </div>
                 <div>
+                  <p className="text-[12px] font-bold text-[#8a796b]">Id</p>
+                  <p className="mt-1 font-semibold text-[#231a11]">{selectedSession._id}</p>
+                </div>
+                <div>
                   <p className="text-[12px] font-bold text-[#8a796b]">Thời gian login</p>
                   <p className="mt-1 font-semibold text-[#231a11]">{formatDate(selectedSession.loginAt || selectedSession.createdAt)}</p>
                 </div>

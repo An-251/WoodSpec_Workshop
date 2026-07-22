@@ -1,33 +1,29 @@
-# Hướng dẫn làm việc với WoodSpec Workshop
+# Hướng dẫn làm việc với WoodSpec
 
-WoodSpec Workshop là giao diện dành cho xưởng gỗ để tiếp nhận yêu cầu báo giá từ khách hàng, xem thông số sản phẩm và tạo báo giá.
+WoodSpec là giao diện cấu hình và gửi yêu cầu báo giá cho sản phẩm nội thất gỗ.
 
 ## Nguyên tắc chính
 
-- Giữ ứng dụng đơn giản, rõ ràng và dễ thao tác.
-- Tập trung vào quy trình xử lý báo giá.
-- Dùng tiếng Việt thống nhất trong toàn bộ giao diện.
-- Không thêm tính năng ngoài phạm vi MVP.
-- Dữ liệu tham khảo đặt trong `src/data/mock`.
-- Mọi dữ liệu đều là mock và lưu bằng LocalStorage.
+- Giữ ứng dụng gọn, rõ và dễ dùng.
+- Dùng tiếng Việt thống nhất trong nội dung người dùng nhìn thấy.
+- Không nhắc trạng thái thử nghiệm trong giao diện hoặc tài liệu bàn giao.
+- Dữ liệu tham khảo đặt trong `src/data/reference`.
+- Bản vẽ sản phẩm dùng SVG hai chiều, không kéo giãn ảnh để mô phỏng kích thước.
 
 ## Cấu trúc thư mục
 
-- `src/pages`: các trang theo route.
-- `src/features`: logic theo từng chức năng.
-- `src/components/common`: component dùng chung.
-- `src/components/ui`: shadcn/ui components.
-- `src/stores`: state dùng chung.
-- `src/utils`: helper functions.
-- `src/constants`: constants.
-- `src/data/mock`: dữ liệu giả lập.
+- `src/pages`: trang theo tuyến đường.
+- `src/features`: logic và thành phần theo chức năng.
+- `src/components/common`: thành phần dùng chung.
+- `src/components/ui`: thành phần giao diện nền tảng.
+- `src/stores`: trạng thái dùng chung.
+- `src/utils`: hàm tiện ích.
+- `src/constants`: hằng số.
 
-## Chức năng hiện tại
+## Phạm vi hiện tại
 
-- Đăng nhập giả lập.
-- Dashboard.
-- Danh sách yêu cầu báo giá.
-- Xem chi tiết yêu cầu.
-- Nhập báo giá.
-- Xuất PDF báo giá.
-- Gửi báo giá (mock).
+- Chọn mẫu sản phẩm.
+- Cấu hình kích thước, vật liệu, màu và bố cục.
+- Xem bản vẽ hai chiều.
+- Tạo bảng thông số.
+- So sánh báo giá tham khảo.

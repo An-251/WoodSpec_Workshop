@@ -1,166 +1,33 @@
-# Quy tắc phát triển WoodSpec Workshop
+# Quy tắc phát triển WoodSpec
 
 ## Phạm vi
 
-Chỉ xây dựng frontend cho Workshop Dashboard.
-
-Không thêm:
-
-- Backend
-- Database
-- Firebase
-- Supabase
-- API thật
-- Authentication thật
-- Thanh toán
-- Chat realtime
-- ThreeJS
-- Canvas
-- WebSocket
-
-Dữ liệu sử dụng LocalStorage hoặc mock data.
-
----
-
-## Công nghệ
-
-- React
-- Vite
-- Tailwind CSS v4
-- shadcn/ui
-- React Router
-- Lucide React
-- React Hook Form
-- Zod
-- Sonner
-- jsPDF
-- html2canvas
-
----
+- Tập trung vào giao diện cấu hình nội thất gỗ và quy trình gửi báo giá.
+- Không thêm máy chủ, cơ sở dữ liệu, thanh toán, thực tế tăng cường, dựng hình ba chiều hoặc xuất bản vẽ sản xuất nếu chưa được yêu cầu.
+- Dữ liệu tham khảo đặt trong `src/data/reference`.
 
 ## Cấu trúc
 
-- `src/pages`
-- `src/features`
-- `src/components/common`
-- `src/components/ui`
-- `src/stores`
-- `src/utils`
-- `src/constants`
-- `src/data/mock`
+- `src/pages`: trang theo tuyến đường.
+- `src/features`: thành phần và logic theo chức năng.
+- `src/components/common`: thành phần dùng chung.
+- `src/components/ui`: thành phần giao diện nền tảng.
+- `src/stores`: trạng thái dùng chung.
+- `src/utils`: hàm tiện ích.
+- `src/constants`: hằng số.
 
-Không viết toàn bộ logic trong một file.
+## Giao diện
 
-Ưu tiên chia component nhỏ.
+- Dùng Tailwind CSS.
+- Dùng thành phần shadcn/ui khi phù hợp.
+- Dùng biểu tượng từ `lucide-react`.
+- Dùng tiếng Việt thống nhất trong nội dung hiển thị.
+- Bản vẽ sản phẩm phải dựng bằng SVG và cập nhật theo kích thước, màu, vật liệu, bố cục.
 
----
+## Kiểm tra
 
-## Dashboard
-
-Dashboard gồm:
-
-- Tổng số yêu cầu
-- Đang chờ xử lý
-- Đã báo giá
-- Đã hoàn thành
-
-Danh sách yêu cầu hiển thị dạng Table hoặc Card.
-
----
-
-## Request
-
-Request Detail gồm:
-
-- Thông tin khách hàng
-- Thông số sản phẩm
-- Kích thước
-- Vật liệu
-- Màu sắc
-- Ghi chú
-- File đính kèm (mock)
-
-Không chỉnh sửa thông tin khách hàng.
-
----
-
-## Quotation
-
-Quotation Form gồm:
-
-- Chi phí vật liệu
-- Chi phí nhân công
-- Chi phí phụ kiện
-- Chi phí vận chuyển
-- Giảm giá
-- Tổng tiền
-- Thời gian hoàn thành
-- Bảo hành
-- Ghi chú
-
-Có Preview trước khi xuất PDF.
-
----
-
-## PDF
-
-Xuất PDF bằng:
-
-- jsPDF
-- html2canvas
-
-PDF gồm:
-
-- Logo Workshop
-- Thông tin khách hàng
-- Thông số sản phẩm
-- Chi tiết báo giá
-- Điều khoản
-- Chữ ký Workshop
-
----
-
-## Authentication
-
-Đây là MVP.
-
-Không có Authentication thật.
-
-Đăng nhập chỉ kiểm tra:
-
-- Email đúng format
-- Password không rỗng
-
-Sau khi đăng nhập:
-
-→ chuyển tới Dashboard.
-
-Không phân quyền.
-
----
-
-## UI
-
-- Tailwind CSS
-- shadcn/ui
-- lucide-react
-
-Phong cách:
-
-- Dashboard
-- Clean
-- Professional
-- Wood-inspired
-- Sidebar layout
-
----
-
-## Build
-
-Trước khi bàn giao luôn chạy:
+Trước khi bàn giao, chạy:
 
 ```bash
 npm run build
 ```
-
-Không được merge nếu build lỗi.

@@ -1,321 +1,44 @@
 # WoodSpec Design System
 
-## Philosophy
+## Palette
 
-WoodSpec adopts an editorial, gallery-inspired design language.
+Source: Realtime Colors
 
-The interface should feel calm, refined, premium, and timeless.
+- Text: `#1b0b09`
+- Background: `#fcf9f8`
+- Primary: `#d5695d`
+- Secondary: `#a53327`
+- Accent: `#d58d85`
 
-Inspired by modern art galleries, luxury furniture brands, Apple, Aesop, and Scandinavian interior design.
+## Tailwind Tokens
 
-The product should communicate craftsmanship through typography, whitespace, and composition rather than decorative wood textures or heavy brown colors.
+- Use Tailwind v4 tokens from `src/index.css` as the single source of truth.
+- Prefer semantic classes: `text-foreground`, `bg-background`, `bg-card`, `bg-primary`, `bg-secondary`, `bg-accent`, `border-border`.
+- Do not hardcode brand colors inside component class names unless the value represents real product material color.
+- Product material swatches may keep their own hex values.
 
-The existing application structure is already correct.
+## Typography
 
-Only the visual language should be updated.
+- Font: Inter via `@fontsource-variable/inter`.
+- Use clear hierarchy through weight, size, and spacing.
+- Keep Vietnamese text short, direct, and user-facing.
 
-Never redesign the workflow, layout, navigation, spacing, or business logic.
+## Components
 
----
+- Cards: `bg-card`, thin `border-border`, soft `shadow-gallery-sm`, moderate radius.
+- Primary buttons: `bg-primary text-primary-foreground`.
+- Secondary/outline buttons: use token variants from shared `Button`.
+- Inputs: `bg-card`, `border-border`, `focus:border-primary`.
+- Badges/statuses: use semantic tokens like `success`, `warning`, `primary`, `secondary`.
 
-# Visual Direction
+## Icons
 
-Keywords
+- Use `lucide-react` only.
+- Icons should help scanning in nav, primary actions, step headings, and statuses.
+- Do not place icons on every input, every metric, or every line of copy.
 
-- Editorial
-- Minimal
-- Museum
-- Luxury
-- Scandinavian
-- Quiet
-- Elegant
-- Premium
-- Timeless
-- Furniture Gallery
+## Flow Rule
 
-Avoid
-
-- Rustic
-- Vintage
-- Orange wood
-- Heavy brown
-- Enterprise dashboard
-- Fintech
-- Crypto
-- Neon
-- Gaming
-
----
-
-# Color Palette
-
-Background
-
-#FAFAF8
-
-Surface
-
-#FFFFFF
-
-Primary Text
-
-#111111
-
-Secondary Text
-
-#666666
-
-Muted Text
-
-#999999
-
-Border
-
-#EAEAEA
-
-Divider
-
-#F2F2F2
-
-Primary Action
-
-#111111
-
-Primary Hover
-
-#222222
-
-Primary Text On Button
-
-#FFFFFF
-
-Secondary Button
-
-Transparent
-
-Secondary Border
-
-#111111
-
-Secondary Hover
-
-#F7F7F7
-
-Success
-
-#2F855A
-
-Warning
-
-#B7791F
-
-Danger
-
-#C53030
-
-Info
-
-#4A5568
-
-Accent
-
-#A07A5A
-
-Accent should only appear in small highlights.
-
-Never dominate the interface.
-
----
-
-# Typography
-
-Heading Font
-
-Cormorant Garamond
-
-Fallback
-
-Playfair Display
-
-Body Font
-
-Inter
-
-Fallback
-
-system-ui
-
-Heading Style
-
-Elegant editorial serif
-
-High contrast
-
-Large scale
-
-Body Style
-
-Clean
-
-Minimal
-
-Readable
-
-Comfortable spacing
-
-Font Weight
-
-400
-
-500
-
-600
-
-700
-
----
-
-# Layout
-
-Keep the current layout exactly.
-
-Do NOT change
-
-- Grid
-- Sidebar
-- Header
-- Navigation
-- Card positions
-- Component hierarchy
-- Screen structure
-- Responsive behavior
-
----
-
-# Cards
-
-White background
-
-Thin neutral border
-
-Minimal shadow
-
-Large whitespace
-
-Soft corners
-
-Never use colored cards.
-
----
-
-# Buttons
-
-Primary
-
-Black background
-
-White text
-
-Minimal
-
-Secondary
-
-White background
-
-Black border
-
-Black text
-
-Ghost
-
-Transparent
-
-Underline on hover is acceptable.
-
----
-
-# Forms
-
-White inputs
-
-Very subtle border
-
-No blue outlines
-
-Use black focus ring
-
-Minimal styling
-
----
-
-# Tables
-
-Very light separators
-
-No zebra striping
-
-Whitespace creates hierarchy
-
----
-
-# Icons
-
-Outline icons only
-
-Simple
-
-Elegant
-
-Consistent stroke width
-
----
-
-# Shadows
-
-Very subtle
-
-Soft
-
-Almost invisible
-
-No floating effect
-
----
-
-# Images
-
-Large
-
-Editorial
-
-High quality
-
-Natural lighting
-
-Furniture should feel like it belongs in an architecture magazine.
-
-Avoid glossy CGI.
-
----
-
-# Motion
-
-Subtle fade
-
-Soft scale
-
-200ms
-
-Ease Out
-
-No dramatic animation.
-
----
-
-# Overall Experience
-
-The interface should feel like visiting a premium furniture exhibition rather than using enterprise software.
-
-Users should feel they are browsing a curated design platform instead of a traditional woodworking management system.
-
-The design language should prioritize typography, spacing, and composition over decorative colors.
+- Configurator is the only place to edit product dimensions, material, internal layout, and request details.
+- Spec Review is read-only. It shows what the user already chose, lets the user confirm each group, and then sends the quote request.
+- If a user needs to change anything from Spec Review, send them back to Configurator with `Chỉnh trong mô hình 3D`.

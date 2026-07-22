@@ -125,8 +125,8 @@ export function decorateFlowItem(item, status) {
     material: item.material || "Gỗ phong cứng",
     product: item.product || item.item,
     dimensions: item.dimensions || "180 x 90 x 75 cm",
-    quoteTotal: item.quoteTotal || "€2,150",
-    deposit: item.deposit || "€1,075",
+    quoteTotal: item.quoteTotal || "53.750.000 ₫",
+    deposit: item.deposit || "26.875.000 ₫",
   }
 }
 

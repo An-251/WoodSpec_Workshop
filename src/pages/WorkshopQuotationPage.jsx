@@ -4,12 +4,13 @@ import { useNavigate, useParams } from "react-router-dom"
 import { ROUTES } from "@/constants/routes"
 import { WorkflowSteps, WorkshopCard, WorkshopPageHeader } from "@/features/workshop/components/WorkshopUI"
 import { FLOW_STATUS, getFlowItem, useWorkshopFlowStore } from "@/stores/useWorkshopFlowStore"
+import { formatVND } from "@/utils/currency"
 
 const lineItems = [
-  ["Thi công sản phẩm chính", 1, 1400],
-  ["Vật liệu gỗ sồi FSC", 1, 400],
-  ["Hoàn thiện bề mặt", 1, 200],
-  ["Giao hàng & lắp đặt", 1, 150],
+  ["Thi công sản phẩm chính", 1, 35_000_000],
+  ["Vật liệu gỗ sồi FSC", 1, 10_000_000],
+  ["Hoàn thiện bề mặt", 1, 5_000_000],
+  ["Giao hàng & lắp đặt", 1, 3_750_000],
 ]
 
 function WorkshopQuotationPage() {
@@ -82,18 +83,18 @@ function WorkshopQuotationPage() {
           <WorkshopCard className="p-6">
             <h3 className="text-xl font-bold text-foreground">Các dòng chi phí</h3>
             <div className="mt-5 overflow-hidden rounded-lg border border-border">
-              <div className="grid grid-cols-[minmax(0,1fr)_90px_140px_140px] bg-muted px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              <div className="grid grid-cols-[minmax(0,1fr)_90px_160px_160px] bg-muted px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                 <span>Mô tả</span>
                 <span>Số lượng</span>
-                <span>Đơn giá (€)</span>
-                <span className="text-right">Tổng (€)</span>
+                <span>Đơn giá</span>
+                <span className="text-right">Thành tiền</span>
               </div>
               {lineItems.map(([label, qty, price]) => (
-                <div key={label} className="grid grid-cols-[minmax(0,1fr)_90px_140px_140px] border-t border-border px-4 py-4">
+                <div key={label} className="grid grid-cols-[minmax(0,1fr)_90px_160px_160px] border-t border-border px-4 py-4">
                   <span className="font-medium">{label}</span>
                   <span>{qty}</span>
-                  <span>{price}</span>
-                  <span className="text-right font-semibold">€{(qty * price).toLocaleString("en-US")}</span>
+                  <span>{formatVND(price)}</span>
+                  <span className="text-right font-semibold">{formatVND(qty * price)}</span>
                 </div>
               ))}
               <button className="w-full border-t border-border py-3 text-sm font-medium text-primary transition duration-200 hover:bg-muted">+ Thêm dòng chi phí</button>
@@ -102,7 +103,7 @@ function WorkshopQuotationPage() {
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               <div className="rounded-md border border-border bg-surface-elevated p-4">
                 <p className="text-sm text-muted-foreground">Tổng báo giá</p>
-                <p className="mt-2 text-2xl font-bold">€{total.toLocaleString("en-US")}</p>
+                <p className="mt-2 text-2xl font-bold">{formatVND(total)}</p>
               </div>
               <div className="rounded-md border border-border bg-surface-elevated p-4">
                 <p className="text-sm text-muted-foreground">Thời gian thi công</p>
@@ -110,7 +111,7 @@ function WorkshopQuotationPage() {
               </div>
               <div className="rounded-md border border-border bg-surface-elevated p-4">
                 <p className="text-sm text-muted-foreground">Đặt cọc đề xuất</p>
-                <p className="mt-2 text-lg font-semibold">50% (€{deposit.toLocaleString("en-US")})</p>
+                <p className="mt-2 text-lg font-semibold">50% ({formatVND(deposit)})</p>
               </div>
             </div>
           </WorkshopCard>
@@ -146,7 +147,7 @@ function WorkshopQuotationPage() {
                 ["Vật liệu", request.material],
                 ["Kích thước", request.dimensions],
                 ["Hạn mong muốn", request.deadline],
-                ["Ngân sách", request.budget || "€2,000 - €3,500"],
+                ["Ngân sách", request.budget || "50.000.000 – 87.000.000 ₫"],
               ].map(([label, value]) => (
                 <div key={label} className="flex justify-between gap-4">
                   <dt className="text-muted-foreground">{label}</dt>

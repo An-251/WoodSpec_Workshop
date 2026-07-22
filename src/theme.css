@@ -1,0 +1,90 @@
+/* WoodSpec Design System Theme - Color Palette and UI Tokens */
+/* Derived from docs/DESIGN.md */
+
+:root {
+  /* Core brand colors */
+  --color-brand-text: #1b0b09;
+  --color-brand-bg: #fcf9f8;
+  --color-brand-primary: #d5695d;
+  --color-brand-secondary: #a53327;
+  --color-brand-accent: #d58d85;
+
+  /* Semantic mapping for Tailwind/Shadcn */
+  --background: #fcf9f8;
+  --foreground: #1b0b09;
+
+  --primary: #d5695d;
+  --primary-foreground: #ffffff;
+
+  --secondary: #a53327;
+  --secondary-foreground: #ffffff;
+
+  --accent: #d58d85;
+  --accent-foreground: #1b0b09;
+
+  --card: #ffffff;
+  --card-foreground: #1b0b09;
+
+  --popover: #ffffff;
+  --popover-foreground: #1b0b09;
+
+  --muted: #f4eeeb;
+  --muted-foreground: #6b5d5b;
+
+  --destructive: #a53327;
+  --destructive-foreground: #ffffff;
+
+  --border: #ebd6d2;
+  --input: #ebd6d2;
+  --ring: #d5695d;
+
+  /* Semantic UI state colors */
+  --success: #2e7d32;
+  --success-foreground: #ffffff;
+  --warning: #e65100;
+  --warning-foreground: #ffffff;
+  --error: #a53327;
+  --error-foreground: #ffffff;
+
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --surface-subtle: #fbf6f5;
+
+  /* Borders & shadows */
+  --radius: 0.5rem;
+  --elevation-sm: 0 1px 3px rgba(27, 11, 9, 0.05), 0 1px 2px rgba(27, 11, 9, 0.03);
+  --elevation-md: 0 4px 6px -1px rgba(27, 11, 9, 0.08), 0 2px 4px -1px rgba(27, 11, 9, 0.05);
+  --elevation-lg: 0 10px 15px -3px rgba(27, 11, 9, 0.08), 0 4px 6px -2px rgba(27, 11, 9, 0.04);
+}
+
+.dark {
+  /* Dark mode variant based on the warm palette */
+  --background: #1b0b09;
+  --foreground: #fcf9f8;
+
+  --primary: #d5695d;
+  --primary-foreground: #ffffff;
+
+  --secondary: #d58d85;
+  --secondary-foreground: #1b0b09;
+
+  --accent: #a53327;
+  --accent-foreground: #ffffff;
+
+  --card: #271412;
+  --card-foreground: #fcf9f8;
+
+  --popover: #271412;
+  --popover-foreground: #fcf9f8;
+
+  --muted: #3a1e1b;
+  --muted-foreground: #bdaea9;
+
+  --destructive: #e57373;
+  --destructive-foreground: #1b0b09;
+
+  --border: #4d2622;
+  --input: #4d2622;
+  --ring: #d5695d;
+}
+

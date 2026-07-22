@@ -1,52 +1,16 @@
-import { Download, FileText, MessageSquare, Send, ShieldCheck, ZoomIn } from "lucide-react"
-import { useRef, useState } from "react"
+import { Download, FileText, MessageSquare, ShieldCheck, ZoomIn } from "lucide-react"
+import { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
 import { ROUTES } from "@/constants/routes"
 import { getOpenRequest } from "@/data/reference/workshopFlow"
 import { FieldGrid, StatusPill, WorkflowSteps, WorkshopCard, WorkshopPageHeader } from "@/features/workshop/components/WorkshopUI"
+import CustomerChatDialog from "@/features/workshop/components/CustomerChatDialog"
 
 function WorkshopRequestDetailPage() {
   const { requestId } = useParams()
   const request = getOpenRequest(requestId)
-  const chatRef = useRef(null)
-  const [draftMessage, setDraftMessage] = useState("")
-  const [messages, setMessages] = useState([
-    {
-      id: "customer-brief",
-      role: "customer",
-      text: request.notes || "Khách muốn xưởng tư vấn thêm trước khi báo giá.",
-      time: "Khách gửi trong brief",
-    },
-    {
-      id: "workshop-template",
-      role: "workshop",
-      text: "Chào anh/chị, xưởng đã nhận brief. Em sẽ rà lại bản vẽ và hỏi thêm nếu cần trước khi gửi báo giá.",
-      time: "Tin nhắn mẫu",
-    },
-  ])
-
-  function openCustomerChat() {
-    chatRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
-  }
-
-  function sendMessage(event) {
-    event.preventDefault()
-    const text = draftMessage.trim()
-
-    if (!text) return
-
-    setMessages((current) => [
-      ...current,
-      {
-        id: `workshop-${Date.now()}`,
-        role: "workshop",
-        text,
-        time: "Vừa gửi",
-      },
-    ])
-    setDraftMessage("")
-  }
+  const [isChatOpen, setIsChatOpen] = useState(false)
 
   return (
     <div className="space-y-8">
@@ -77,80 +41,13 @@ function WorkshopRequestDetailPage() {
               </Link>
               <button
                 type="button"
-                onClick={openCustomerChat}
+                onClick={() => setIsChatOpen(true)}
                 className="inline-flex h-11 items-center gap-2 rounded-full border border-border bg-card px-5 font-medium text-foreground transition duration-200 hover:border-primary/35 hover:bg-muted"
               >
                 <MessageSquare className="size-4" />
                 Hỏi khách
               </button>
             </div>
-          </WorkshopCard>
-
-          <WorkshopCard className="p-6" ref={chatRef}>
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <h3 className="flex items-center gap-2 text-xl font-bold text-foreground">
-                  <MessageSquare className="size-5 text-primary" />
-                  Hỏi khách
-                </h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Trao đổi nhanh để làm rõ vật liệu, kích thước, thời gian hoặc điều kiện lắp đặt trước khi báo giá.
-                </p>
-              </div>
-              <StatusPill tone="muted">Hội thoại MVP</StatusPill>
-            </div>
-
-            <div className="mt-5 max-h-80 space-y-3 overflow-y-auto rounded-lg border border-border bg-surface-elevated p-4">
-              {messages.map((message) => {
-                const isWorkshop = message.role === "workshop"
-
-                return (
-                  <div key={message.id} className={`flex ${isWorkshop ? "justify-end" : "justify-start"}`}>
-                    <div
-                      className={`max-w-[78%] rounded-lg px-4 py-3 text-sm shadow-gallery-sm ${
-                        isWorkshop ? "bg-primary text-primary-foreground" : "border border-border bg-card text-foreground"
-                      }`}
-                    >
-                      <p className="leading-6">{message.text}</p>
-                      <p className={`mt-2 text-[11px] ${isWorkshop ? "text-primary-foreground/75" : "text-muted-foreground"}`}>{message.time}</p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {[
-                "Anh/chị cho em xin ảnh vị trí lắp đặt được không?",
-                "Anh/chị ưu tiên vật liệu hay ngân sách hơn?",
-                "Thời gian bàn giao mong muốn là ngày nào?",
-              ].map((template) => (
-                <button
-                  key={template}
-                  type="button"
-                  onClick={() => setDraftMessage(template)}
-                  className="rounded-full border border-border bg-card px-3 py-2 text-xs font-medium text-muted-foreground transition duration-200 hover:border-primary/35 hover:text-foreground"
-                >
-                  {template}
-                </button>
-              ))}
-            </div>
-
-            <form onSubmit={sendMessage} className="mt-4 flex flex-col gap-3 sm:flex-row">
-              <input
-                value={draftMessage}
-                onChange={(event) => setDraftMessage(event.target.value)}
-                className="h-11 min-w-0 flex-1 rounded-full border border-input bg-card px-4 text-foreground outline-none transition duration-200 placeholder:text-muted-foreground/70 focus:border-ring focus:ring-2 focus:ring-ring/30"
-                placeholder="Nhập câu hỏi gửi khách..."
-              />
-              <button
-                type="submit"
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-5 font-semibold text-primary-foreground shadow-gallery-sm transition duration-200 hover:bg-foreground"
-              >
-                Gửi tin
-                <Send className="size-4" />
-              </button>
-            </form>
           </WorkshopCard>
 
           <WorkshopCard className="p-6">
@@ -273,8 +170,15 @@ function WorkshopRequestDetailPage() {
           </WorkshopCard>
         </aside>
       </div>
+
+      <CustomerChatDialog
+        isOpen={isChatOpen}
+        onOpenChange={setIsChatOpen}
+        request={request}
+      />
     </div>
   )
 }
 
 export default WorkshopRequestDetailPage
+

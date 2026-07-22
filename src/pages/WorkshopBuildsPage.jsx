@@ -40,7 +40,7 @@ function WorkshopBuildsPage() {
                   <span className="font-semibold">{progress}%</span>
                 </div>
                 <div className="h-2 overflow-hidden rounded-full bg-[#f5f5f4]">
-                  <div className="h-full rounded-full bg-[#0a0a0a]" style={{ width: `${progress}%` }} />
+                  <div className="h-full rounded-full bg-primary" style={{ width: `${progress}%` }} />
                 </div>
               </div>
 

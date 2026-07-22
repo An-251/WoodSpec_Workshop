@@ -91,7 +91,7 @@ function WorkshopBuildDetailPage() {
                   <p className="text-sm text-muted-foreground">hoàn tất</p>
                 </div>
               </div>
-              <div className="mt-5 h-2 overflow-hidden rounded-full bg-muted">
+              <div className="mt-5 h-2 overflow-hidden rounded-full bg-border">
                 <div className="h-full rounded-full bg-primary" style={{ width: `${buildProgress}%` }} />
               </div>
 

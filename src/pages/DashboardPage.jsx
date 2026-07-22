@@ -2,6 +2,7 @@ import { ArrowRight, BadgeCheck, ReceiptText, Users, Wrench } from "lucide-react
 import { Link } from "react-router-dom"
 
 import { ROUTES } from "@/constants/routes"
+import { DashboardCharts } from "@/features/workshop/components/DashboardCharts"
 import { StatusPill, Thumbnail, WorkshopCard, WorkshopPageHeader } from "@/features/workshop/components/WorkshopUI"
 import { FLOW_STATUS, getFlowRows, useWorkshopFlowStore } from "@/stores/useWorkshopFlowStore"
 
@@ -92,6 +93,14 @@ function DashboardPage() {
         </div>
       </WorkshopCard>
 
+      <div className="grid gap-5 md:grid-cols-3">
+        <MetricCard icon={ReceiptText} label="Yêu cầu đang chờ" value={openRows.length} note={openRows[0] ? `Mới nhất: ${openRows[0].customer}` : "Không còn yêu cầu mới"} />
+        <MetricCard icon={Users} label="Báo giá đang so sánh" value={awaitingRows.length} note="Khách sẽ chọn một xưởng để đi tiếp" />
+        <MetricCard icon={BadgeCheck} label="Dự án đã thắng" value={selectedRows.length} note="Cần cập nhật tiến độ đều" />
+      </div>
+
+      <DashboardCharts />
+
       <div className="grid gap-5 xl:grid-cols-3">
         <WorkshopCard className="p-5">
           <div className="mb-4 flex items-center justify-between">
@@ -131,12 +140,6 @@ function DashboardPage() {
             {selectedRows.map((row) => <RequestRow key={row.id} row={row} />)}
           </div>
         </WorkshopCard>
-      </div>
-
-      <div className="grid gap-5 md:grid-cols-3">
-        <MetricCard icon={ReceiptText} label="Yêu cầu đang chờ" value={openRows.length} note={openRows[0] ? `Mới nhất: ${openRows[0].customer}` : "Không còn yêu cầu mới"} />
-        <MetricCard icon={Users} label="Báo giá đang so sánh" value={awaitingRows.length} note="Khách sẽ chọn một xưởng để đi tiếp" />
-        <MetricCard icon={BadgeCheck} label="Dự án đã thắng" value={selectedRows.length} note="Cần cập nhật tiến độ đều" />
       </div>
     </div>
   )

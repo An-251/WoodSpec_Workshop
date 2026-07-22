@@ -1,7 +1,5 @@
-export function formatCurrency(value) {
-  return new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-    maximumFractionDigits: 0,
-  }).format(value)
-}
+/**
+ * @deprecated Import trực tiếp từ "@/utils/currency" thay thế.
+ * File này giữ lại để tương thích ngược với các import cũ.
+ */
+export { formatCurrency, formatVND, formatVNDShort, formatVNDRange } from "@/utils/currency"

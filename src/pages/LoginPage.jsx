@@ -45,18 +45,18 @@ function LoginPage() {
 
   return (
     <section className="mx-auto max-w-md px-4 py-12 text-left">
-      <div className="rounded-xl border border-[#ead8ca] bg-white p-8 shadow-[0_4px_20px_rgba(43,33,24,0.08)]">
-        <div className="mb-6 border-b border-[#ead8ca] pb-5">
-          <h1 className="flex items-center gap-2 text-2xl font-semibold tracking-normal text-[#231a11]">
-            <LogIn className="size-5 text-[#854f19]" />
+      <div className="rounded-xl border border-[#e5e5e5] bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+        <div className="mb-6 border-b border-[#e5e5e5] pb-5">
+          <h1 className="flex items-center gap-2 text-2xl font-semibold tracking-normal text-[#0a0a0a]">
+            <LogIn className="size-5 text-[#6f665c]" />
             Bắt đầu phiên khảo sát
           </h1>
-          <p className="mt-2 text-sm leading-6 text-[#52443a]">
+          <p className="mt-2 text-sm leading-6 text-[#525252]">
             Nhập email để WoodSpec ghi lại luồng thao tác trong quá trình bạn trải nghiệm ứng dụng.
           </p>
         </div>
 
-        <div className="mb-5 rounded-lg bg-[#fff1e8] p-4 text-sm leading-6 text-[#735b2d]">
+        <div className="mb-5 rounded-lg bg-[#f7f7f5] p-4 text-sm leading-6 text-[#525252]">
           Không cần tài khoản hoặc mật khẩu. Email chỉ dùng để nhóm dữ liệu tương tác theo từng người khảo sát.
         </div>
 
@@ -64,7 +64,7 @@ function LoginPage() {
           <div className="space-y-2">
             <Label htmlFor="email">Email khảo sát</Label>
             <div className="relative">
-              <Mail className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#735b2d]" />
+              <Mail className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#525252]" />
               <Input
                 id="email"
                 type="email"
@@ -80,14 +80,14 @@ function LoginPage() {
             </div>
           </div>
           {error ? <p className="text-sm text-[#ba1a1a]">{error}</p> : null}
-          <Button type="submit" className="w-full bg-[#854f19] hover:bg-[#7a4a22]" size="lg" disabled={isSubmitting}>
+          <Button type="submit" className="w-full bg-[#0a0a0a] hover:bg-[#262626]" size="lg" disabled={isSubmitting}>
             {isSubmitting ? "Đang bắt đầu..." : "Bắt đầu lưu log"}
           </Button>
         </form>
 
-        <p className="mt-4 text-center text-sm text-[#52443a]">
+        <p className="mt-4 text-center text-sm text-[#525252]">
           Quay lại{" "}
-          <Link className="font-medium text-[#854f19] underline" to={ROUTES.home}>
+          <Link className="font-medium text-[#6f665c] underline" to={ROUTES.home}>
             trang chủ
           </Link>
         </p>

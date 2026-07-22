@@ -1,4 +1,4 @@
-﻿import { ArrowRight, SlidersHorizontal, UsersRound } from "lucide-react"
+import { ArrowRight, SlidersHorizontal, UsersRound } from "lucide-react"
 import { Link } from "react-router-dom"
 import { useState } from "react"
 

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 import * as THREE from "three"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
 
-const woodLine = "#6b3f20"
+const woodLine = "#6f665c"
 const floorColor = "#f0e8dd"
 const canReferenceUrl = "/models/coca-reference.glb"
 const cokeCanHeight = 0.115
@@ -38,7 +38,7 @@ function normalizeColor(hex) {
     return hex
   }
 
-  return "#c99d5a"
+  return "#a69c91"
 }
 
 function createMaterial(color, options = {}) {
@@ -151,12 +151,12 @@ function createTextSprite(text) {
   const context = canvas.getContext("2d")
   context.clearRect(0, 0, canvas.width, canvas.height)
   context.fillStyle = "rgba(255, 250, 246, 0.94)"
-  context.strokeStyle = "#d7c3b5"
+  context.strokeStyle = "#d4d4d4"
   context.lineWidth = 8
   context.roundRect(16, 28, 480, 128, 34)
   context.fill()
   context.stroke()
-  context.fillStyle = "#854f19"
+  context.fillStyle = "#6f665c"
   context.font = "700 58px Arial"
   context.textAlign = "center"
   context.textBaseline = "middle"
@@ -273,8 +273,8 @@ function buildProductModel(configuration) {
   const bodyMaterial = createMaterial(bodyColor)
   const edgeMaterial = createMaterial(darkerColor, { roughness: 0.74 })
   const backMaterial = createMaterial(lightColor, { transparent: true, opacity: designDetails.backPanel === "closed" ? 0.75 : 0.42 })
-  const glassMaterial = createMaterial("#f7eee5", { transparent: true, opacity: 0.33, roughness: 0.18 })
-  const handleMaterial = createMaterial("#8b5a2b", { roughness: 0.35, metalness: 0.12 })
+  const glassMaterial = createMaterial("#f5f5f4", { transparent: true, opacity: 0.33, roughness: 0.18 })
+  const handleMaterial = createMaterial("#6f665c", { roughness: 0.35, metalness: 0.12 })
   const lineMaterial = new THREE.LineBasicMaterial({ color: woodLine, transparent: true, opacity: 0.28 })
   const frontZ = depth / 2
   const backZ = -depth / 2
@@ -387,7 +387,7 @@ function buildProductModel(configuration) {
   }
 
   if (showSeatPad) {
-    addBox(group, { x: width - board * 2, y: 0.08, z: depth * 0.94 }, { x: 0, y: height + 0.05, z: 0 }, createMaterial("#f4eee8", { roughness: 0.82 }), "seat-pad")
+    addBox(group, { x: width - board * 2, y: 0.08, z: depth * 0.94 }, { x: 0, y: height + 0.05, z: 0 }, createMaterial("#f5f5f4", { roughness: 0.82 }), "seat-pad")
   }
 
   addWoodGrain(group, width, height, depth, lineMaterial)
@@ -464,7 +464,7 @@ function Cabinet3DPreview({ configuration, selectedPart = "overall", onPartSelec
     }
 
     const scene = new THREE.Scene()
-    scene.background = new THREE.Color("#f7f2ec")
+    scene.background = new THREE.Color("#ffffff")
 
     const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100)
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
@@ -476,7 +476,7 @@ function Cabinet3DPreview({ configuration, selectedPart = "overall", onPartSelec
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     mount.appendChild(renderer.domElement)
 
-    const ambient = new THREE.HemisphereLight("#fff7ef", "#7a604a", 1.6)
+    const ambient = new THREE.HemisphereLight("#f5f5f4", "#737373", 1.6)
     scene.add(ambient)
 
     const keyLight = new THREE.DirectionalLight("#ffffff", 2.8)
@@ -485,7 +485,7 @@ function Cabinet3DPreview({ configuration, selectedPart = "overall", onPartSelec
     keyLight.shadow.mapSize.set(1024, 1024)
     scene.add(keyLight)
 
-    const fillLight = new THREE.DirectionalLight("#e3bd95", 1.2)
+    const fillLight = new THREE.DirectionalLight("#d4d4d4", 1.2)
     fillLight.position.set(-3.6, 2.6, -3.8)
     scene.add(fillLight)
 
@@ -498,7 +498,7 @@ function Cabinet3DPreview({ configuration, selectedPart = "overall", onPartSelec
     scene.add(floor)
 
     const wallGeometry = new THREE.PlaneGeometry(8, 4.8)
-    const wallMaterial = createMaterial("#fbf8f3", { roughness: 0.9 })
+    const wallMaterial = createMaterial("#fafafa", { roughness: 0.9 })
     const wall = new THREE.Mesh(wallGeometry, wallMaterial)
     wall.position.set(0, 2.1, -1.35)
     wall.receiveShadow = true
@@ -613,7 +613,7 @@ function Cabinet3DPreview({ configuration, selectedPart = "overall", onPartSelec
       productGroup.traverse((child) => {
         if (child.isMesh && child.material?.emissive) {
           const isSelected = child.userData.partId === selectedPartRef.current
-          child.material.emissive.set(isSelected ? "#8a531e" : "#000000")
+          child.material.emissive.set(isSelected ? "#6f665c" : "#000000")
           child.material.emissiveIntensity = isSelected ? 0.18 : 0
         }
       })
@@ -639,31 +639,31 @@ function Cabinet3DPreview({ configuration, selectedPart = "overall", onPartSelec
   const { dimensions, material, color } = configuration
 
   return (
-    <div className={`flex min-h-0 flex-col overflow-hidden rounded-xl border border-[#d7c3b5] bg-[#f7f2ec] shadow-[0_18px_70px_rgba(43,33,24,0.12)] ${className}`}>
-      <div className="flex flex-col gap-3 border-b border-[#d7c3b5] bg-[#fbf8f3] px-5 py-4 md:flex-row md:items-center md:justify-between">
+    <div className={`flex min-h-0 flex-col overflow-hidden rounded-xl border border-[#d4d4d4] bg-[#ffffff] shadow-[0_18px_70px_rgba(0,0,0,0.07)] ${className}`}>
+      <div className="flex flex-col gap-3 border-b border-[#d4d4d4] bg-[#fafafa] px-5 py-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#a35c36]">Mô hình 3D</p>
-          <h2 className="mt-1 text-2xl font-semibold text-[#241d16]">{configuration.productName}</h2>
-          <p className="mt-1 text-sm text-[#6a5b4f]">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#6f665c]">Mô hình 3D</p>
+          <h2 className="mt-1 text-2xl font-semibold text-[#0a0a0a]">{configuration.productName}</h2>
+          <p className="mt-1 text-sm text-[#525252]">
             {material.name} · {color.name}
           </p>
         </div>
-        <div className="rounded-full border border-[#d7c3b5] bg-white px-4 py-2 text-sm font-semibold text-[#6a3f20]">
+        <div className="rounded-full border border-[#d4d4d4] bg-white px-4 py-2 text-sm font-semibold text-[#525252]">
           {formatCmFromMm(dimensions.width)} x {formatCmFromMm(dimensions.height)} x {formatCmFromMm(dimensions.depth)} cm
         </div>
       </div>
-      <div className="border-b border-[#ead8ca] bg-white px-5 py-3 text-sm text-[#735b2d]">
+      <div className="border-b border-[#e5e5e5] bg-white px-5 py-3 text-sm text-[#525252]">
         Đang chọn: <strong>{partLabels[selectedPart] ?? partLabels.overall}</strong>. Bấm vào từng phần trên mô hình để chỉnh đúng thông số.
       </div>
       <div className="relative min-h-0 flex-1">
         <div className="absolute right-4 top-4 z-10 flex gap-2">
-          <button type="button" onClick={zoomIn} className="size-10 rounded-full border border-[#d7c3b5] bg-white text-lg font-bold text-[#854f19] shadow-sm">
+          <button type="button" onClick={zoomIn} className="size-10 rounded-full border border-[#d4d4d4] bg-white text-lg font-bold text-[#6f665c] shadow-sm">
             +
           </button>
-          <button type="button" onClick={zoomOut} className="size-10 rounded-full border border-[#d7c3b5] bg-white text-lg font-bold text-[#854f19] shadow-sm">
+          <button type="button" onClick={zoomOut} className="size-10 rounded-full border border-[#d4d4d4] bg-white text-lg font-bold text-[#6f665c] shadow-sm">
             -
           </button>
-          <button type="button" onClick={resetView} className="rounded-full border border-[#d7c3b5] bg-white px-4 text-sm font-bold text-[#854f19] shadow-sm">
+          <button type="button" onClick={resetView} className="rounded-full border border-[#d4d4d4] bg-white px-4 text-sm font-bold text-[#6f665c] shadow-sm">
             Góc chuẩn
           </button>
         </div>

@@ -1,4 +1,4 @@
-﻿import { Check, ChevronLeft, Search } from "lucide-react"
+import { Check, ChevronLeft, Search } from "lucide-react"
 import { Link } from "react-router-dom"
 
 import { workflowSteps } from "@/data/reference/workshopFlow"

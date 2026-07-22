@@ -53,19 +53,19 @@ function DimensionForm({ dimensions, onChange }) {
 
   return (
     <div>
-      <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-[#847468]">Kích thước</h2>
-      <p className="mb-4 text-xs leading-5 text-[#735b2d]">
+      <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-[#737373]">Kích thước</h2>
+      <p className="mb-4 text-xs leading-5 text-[#525252]">
         Bạn có thể nhìn theo cm cho dễ hình dung; hệ thống vẫn giữ mm để bản vẽ chính xác.
       </p>
       <div className="space-y-5">
         {dimensionFields.map((field) => (
-          <div key={field.key} className="rounded-lg border border-[#ead8ca] bg-[#fffaf6] p-3">
+          <div key={field.key} className="rounded-lg border border-[#e5e5e5] bg-[#fafafa] p-3">
             <div className="mb-3 flex items-start justify-between gap-4">
               <div>
-                <Label htmlFor={field.key} className="font-semibold text-[#52443a]">
+                <Label htmlFor={field.key} className="font-semibold text-[#525252]">
                   {field.label}
                 </Label>
-                <p className="mt-1 text-xs leading-5 text-[#847468]">{field.hint}</p>
+                <p className="mt-1 text-xs leading-5 text-[#737373]">{field.hint}</p>
               </div>
               <div className="text-right">
                 <input
@@ -76,9 +76,9 @@ function DimensionForm({ dimensions, onChange }) {
                   step={field.step}
                   value={dimensions[field.key]}
                   onChange={(event) => handleChange(field, event.target.value)}
-                  className="h-9 w-28 rounded-lg border border-[#d7c3b5] bg-white px-3 text-right text-sm font-bold text-[#854f19] outline-none focus:border-[#854f19]"
+                  className="h-9 w-28 rounded-lg border border-[#d4d4d4] bg-white px-3 text-right text-sm font-bold text-[#6f665c] outline-none focus:border-[#6f665c]"
                 />
-                <p className="mt-1 text-xs font-semibold text-[#735b2d]">
+                <p className="mt-1 text-xs font-semibold text-[#525252]">
                   khoảng {toCentimeters(dimensions[field.key])} cm
                 </p>
               </div>
@@ -91,9 +91,9 @@ function DimensionForm({ dimensions, onChange }) {
               step={field.step}
               value={dimensions[field.key]}
               onChange={(event) => handleChange(field, event.target.value)}
-              className="w-full accent-[#854f19]"
+              className="w-full accent-[#6f665c]"
             />
-            <div className="mt-1 flex justify-between text-xs text-[#847468]">
+            <div className="mt-1 flex justify-between text-xs text-[#737373]">
               <span>{toCentimeters(field.min)} cm</span>
               <span>{field.shortLabel}: {dimensions[field.key]} mm</span>
               <span>{toCentimeters(field.max)} cm</span>

@@ -1,26 +1,321 @@
-# Thiết kế giao diện WoodSpec
+# WoodSpec Design System
 
-## Tinh thần
+## Philosophy
 
-Giao diện cần tạo cảm giác ấm, rõ ràng và đáng tin cậy. Người dùng phải nhanh chóng hiểu mình đang chọn sản phẩm nào, chỉnh thông số gì và gửi thông tin nào cho xưởng.
+WoodSpec adopts an editorial, gallery-inspired design language.
 
-## Bố cục
+The interface should feel calm, refined, premium, and timeless.
 
-- Trang chủ giới thiệu ngắn gọn quy trình.
-- Bảng điều khiển ưu tiên danh sách sản phẩm.
-- Trang cấu hình chia hai phần: điều khiển bên trái, bản vẽ bên phải.
-- Trang bảng thông số trình bày theo nhóm thông tin dễ kiểm tra.
-- Trang báo giá đặt giá, thời gian, bảo hành và điểm tin cậy ở vị trí dễ quét mắt.
+Inspired by modern art galleries, luxury furniture brands, Apple, Aesop, and Scandinavian interior design.
 
-## Thành phần
+The product should communicate craftsmanship through typography, whitespace, and composition rather than decorative wood textures or heavy brown colors.
 
-- Bản vẽ hai chiều dùng SVG.
-- Nút chính dùng màu nâu gỗ.
-- Thẻ sản phẩm và thẻ báo giá dùng nền trắng, viền nhẹ.
-- Thông báo dùng câu ngắn, rõ kết quả.
+The existing application structure is already correct.
 
-## Nội dung
+Only the visual language should be updated.
 
-- Dùng tiếng Việt tự nhiên.
-- Tránh pha thuật ngữ tiếng Anh nếu có cách gọi tiếng Việt phù hợp.
-- Không dùng nội dung nhắc trạng thái thử nghiệm.
+Never redesign the workflow, layout, navigation, spacing, or business logic.
+
+---
+
+# Visual Direction
+
+Keywords
+
+- Editorial
+- Minimal
+- Museum
+- Luxury
+- Scandinavian
+- Quiet
+- Elegant
+- Premium
+- Timeless
+- Furniture Gallery
+
+Avoid
+
+- Rustic
+- Vintage
+- Orange wood
+- Heavy brown
+- Enterprise dashboard
+- Fintech
+- Crypto
+- Neon
+- Gaming
+
+---
+
+# Color Palette
+
+Background
+
+#FAFAF8
+
+Surface
+
+#FFFFFF
+
+Primary Text
+
+#111111
+
+Secondary Text
+
+#666666
+
+Muted Text
+
+#999999
+
+Border
+
+#EAEAEA
+
+Divider
+
+#F2F2F2
+
+Primary Action
+
+#111111
+
+Primary Hover
+
+#222222
+
+Primary Text On Button
+
+#FFFFFF
+
+Secondary Button
+
+Transparent
+
+Secondary Border
+
+#111111
+
+Secondary Hover
+
+#F7F7F7
+
+Success
+
+#2F855A
+
+Warning
+
+#B7791F
+
+Danger
+
+#C53030
+
+Info
+
+#4A5568
+
+Accent
+
+#A07A5A
+
+Accent should only appear in small highlights.
+
+Never dominate the interface.
+
+---
+
+# Typography
+
+Heading Font
+
+Cormorant Garamond
+
+Fallback
+
+Playfair Display
+
+Body Font
+
+Inter
+
+Fallback
+
+system-ui
+
+Heading Style
+
+Elegant editorial serif
+
+High contrast
+
+Large scale
+
+Body Style
+
+Clean
+
+Minimal
+
+Readable
+
+Comfortable spacing
+
+Font Weight
+
+400
+
+500
+
+600
+
+700
+
+---
+
+# Layout
+
+Keep the current layout exactly.
+
+Do NOT change
+
+- Grid
+- Sidebar
+- Header
+- Navigation
+- Card positions
+- Component hierarchy
+- Screen structure
+- Responsive behavior
+
+---
+
+# Cards
+
+White background
+
+Thin neutral border
+
+Minimal shadow
+
+Large whitespace
+
+Soft corners
+
+Never use colored cards.
+
+---
+
+# Buttons
+
+Primary
+
+Black background
+
+White text
+
+Minimal
+
+Secondary
+
+White background
+
+Black border
+
+Black text
+
+Ghost
+
+Transparent
+
+Underline on hover is acceptable.
+
+---
+
+# Forms
+
+White inputs
+
+Very subtle border
+
+No blue outlines
+
+Use black focus ring
+
+Minimal styling
+
+---
+
+# Tables
+
+Very light separators
+
+No zebra striping
+
+Whitespace creates hierarchy
+
+---
+
+# Icons
+
+Outline icons only
+
+Simple
+
+Elegant
+
+Consistent stroke width
+
+---
+
+# Shadows
+
+Very subtle
+
+Soft
+
+Almost invisible
+
+No floating effect
+
+---
+
+# Images
+
+Large
+
+Editorial
+
+High quality
+
+Natural lighting
+
+Furniture should feel like it belongs in an architecture magazine.
+
+Avoid glossy CGI.
+
+---
+
+# Motion
+
+Subtle fade
+
+Soft scale
+
+200ms
+
+Ease Out
+
+No dramatic animation.
+
+---
+
+# Overall Experience
+
+The interface should feel like visiting a premium furniture exhibition rather than using enterprise software.
+
+Users should feel they are browsing a curated design platform instead of a traditional woodworking management system.
+
+The design language should prioritize typography, spacing, and composition over decorative colors.

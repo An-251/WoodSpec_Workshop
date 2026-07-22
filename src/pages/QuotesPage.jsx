@@ -80,16 +80,16 @@ function QuotesPage() {
   if (!shouldShowQuotes) {
     return (
       <section className="mx-auto flex min-h-[70vh] max-w-3xl items-center px-4 py-8 text-left lg:px-10">
-        <div className="w-full rounded-xl border border-[#ead8ca] bg-white p-8 shadow-[0_4px_20px_rgba(43,33,24,0.08)]">
-          <div className="flex size-12 items-center justify-center rounded-lg bg-[#fff1e8] text-[#854f19]">
+        <div className="w-full rounded-xl border border-[#e5e5e5] bg-white p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+          <div className="flex size-12 items-center justify-center rounded-lg bg-[#f7f7f5] text-[#6f665c]">
             <Inbox className="size-6" />
           </div>
-          <h1 className="mt-5 text-3xl font-semibold text-[#231a11]">Bạn cần gửi yêu cầu trước khi xem báo giá</h1>
-          <p className="mt-3 text-sm leading-7 text-[#52443a]">
+          <h1 className="mt-5 text-3xl font-semibold text-[#0a0a0a]">Bạn cần gửi yêu cầu trước khi xem báo giá</h1>
+          <p className="mt-3 text-sm leading-7 text-[#525252]">
             Hãy kiểm tra bảng thông số và bấm “Đặt đồ / nhận báo giá”. Sau đó WoodSpec sẽ tạo yêu cầu và hiển thị các báo giá phù hợp.
           </p>
           <Link to={specReviewPath}>
-            <Button className="mt-6 bg-[#854f19] hover:bg-[#7a4a22]">
+            <Button className="mt-6 bg-[#0a0a0a] hover:bg-[#262626]">
               Quay lại bảng thông số
             </Button>
           </Link>
@@ -102,30 +102,30 @@ function QuotesPage() {
     <section className="mx-auto max-w-7xl space-y-6 px-4 py-8 text-left lg:px-10">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-lg border border-[#ead8ca] bg-[#fff1e8] px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#854f19]">
+          <div className="inline-flex items-center gap-2 rounded-lg border border-[#e5e5e5] bg-[#f7f7f5] px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#6f665c]">
             <ReceiptText className="size-4" />
             Báo giá xưởng
           </div>
-          <h1 className="mt-4 text-3xl font-bold tracking-normal text-[#231a11] md:text-4xl">
+          <h1 className="mt-4 text-3xl font-bold tracking-normal text-[#0a0a0a] md:text-4xl">
             So sánh báo giá xưởng
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-7 text-[#52443a]">
+          <p className="mt-2 max-w-2xl text-sm leading-7 text-[#525252]">
             Các báo giá được tính từ cấu hình hiện tại để minh họa cách WoodSpec chuyển bảng thông số
             thành danh sách lựa chọn có thể so sánh.
           </p>
-          <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-[#735b2d]">
-            <span className="rounded-md border border-[#ead8ca] bg-white px-2 py-1">Khu vực: {details.region}</span>
-            <span className="rounded-md border border-[#ead8ca] bg-white px-2 py-1">Gửi {quotes.length} xưởng phù hợp</span>
-            <span className="rounded-md border border-[#ead8ca] bg-white px-2 py-1">
+          <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-[#525252]">
+            <span className="rounded-md border border-[#e5e5e5] bg-white px-2 py-1">Khu vực: {details.region}</span>
+            <span className="rounded-md border border-[#e5e5e5] bg-white px-2 py-1">Gửi {quotes.length} xưởng phù hợp</span>
+            <span className="rounded-md border border-[#e5e5e5] bg-white px-2 py-1">
               Trạng thái: {details.requestStatus === "draft" ? "Bản nháp" : details.finalConfirmed ? "Đã xác nhận cuối" : "Đã có báo giá"}
             </span>
             {configuration.quoteRequest?.id && (
-              <span className="rounded-md border border-[#ead8ca] bg-white px-2 py-1">Mã yêu cầu: {configuration.quoteRequest.id}</span>
+              <span className="rounded-md border border-[#e5e5e5] bg-white px-2 py-1">Mã yêu cầu: {configuration.quoteRequest.id}</span>
             )}
           </div>
         </div>
         <Link to={specReviewPath}>
-          <Button variant="outline" className="border-[#d7c3b5] bg-white text-[#854f19]">
+          <Button variant="outline" className="border-[#d4d4d4] bg-white text-[#6f665c]">
             <ArrowLeft />
             Quay lại thông số
           </Button>
@@ -133,31 +133,31 @@ function QuotesPage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
-        <div className="rounded-xl border border-[#ead8ca] bg-white p-5 shadow-[0_4px_20px_rgba(43,33,24,0.08)]">
-          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#847468]">Sản phẩm</p>
-          <h2 className="mt-2 text-lg font-semibold text-[#231a11]">{configuration.productName}</h2>
-          <p className="mt-2 text-sm text-[#52443a]">
+        <div className="rounded-xl border border-[#e5e5e5] bg-white p-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#737373]">Sản phẩm</p>
+          <h2 className="mt-2 text-lg font-semibold text-[#0a0a0a]">{configuration.productName}</h2>
+          <p className="mt-2 text-sm text-[#525252]">
             {dimensions.width} x {dimensions.height} x {dimensions.depth} mm
           </p>
         </div>
-        <div className="rounded-xl border border-[#ead8ca] bg-white p-5 shadow-[0_4px_20px_rgba(43,33,24,0.08)]">
-          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#847468]">Giá ước tính</p>
-          <strong className="mt-2 block text-2xl text-[#854f19]">{formatCurrency(configuration.estimatedPrice)}</strong>
-          <p className="mt-2 text-sm text-[#52443a]">Dùng để đối chiếu với báo giá xưởng.</p>
+        <div className="rounded-xl border border-[#e5e5e5] bg-white p-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#737373]">Giá ước tính</p>
+          <strong className="mt-2 block text-2xl text-[#6f665c]">{formatCurrency(configuration.estimatedPrice)}</strong>
+          <p className="mt-2 text-sm text-[#525252]">Dùng để đối chiếu với báo giá xưởng.</p>
         </div>
-        <div className="rounded-xl border border-[#ead8ca] bg-[#fff1e8] p-5">
-          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#847468]">Gợi ý nhanh</p>
-          <strong className="mt-2 block text-lg text-[#231a11]">
+        <div className="rounded-xl border border-[#e5e5e5] bg-[#f7f7f5] p-5">
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#737373]">Gợi ý nhanh</p>
+          <strong className="mt-2 block text-lg text-[#0a0a0a]">
             {quotes[0]?.workshop.name} đang đứng đầu theo bộ lọc
           </strong>
-          <p className="mt-2 text-sm text-[#735b2d]">Bạn có thể đổi tiêu chí để ưu tiên giá, tốc độ hoặc bảo hành.</p>
+          <p className="mt-2 text-sm text-[#525252]">Bạn có thể đổi tiêu chí để ưu tiên giá, tốc độ hoặc bảo hành.</p>
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 rounded-xl border border-[#ead8ca] bg-white p-4 shadow-[0_4px_20px_rgba(43,33,24,0.08)] md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-3 rounded-xl border border-[#e5e5e5] bg-white p-4 shadow-[0_4px_20px_rgba(0,0,0,0.05)] md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-sm font-semibold text-[#231a11]">Sắp xếp báo giá</p>
-          <p className="mt-1 text-xs text-[#847468]">Bảng so sánh dùng dữ liệu tham khảo để bạn dễ đối chiếu phương án.</p>
+          <p className="text-sm font-semibold text-[#0a0a0a]">Sắp xếp báo giá</p>
+          <p className="mt-1 text-xs text-[#737373]">Bảng so sánh dùng dữ liệu tham khảo để bạn dễ đối chiếu phương án.</p>
         </div>
         <div className="flex flex-wrap gap-2">
           {sortOptions.map((option) => (
@@ -167,8 +167,8 @@ function QuotesPage() {
               onClick={() => setSortBy(option.id)}
               className={`rounded-lg border px-3 py-2 text-sm font-semibold transition ${
                 sortBy === option.id
-                  ? "border-[#854f19] bg-[#854f19] text-white"
-                  : "border-[#d7c3b5] bg-white text-[#735b2d] hover:border-[#854f19]"
+                  ? "border-[#0a0a0a] bg-[#0a0a0a] text-white"
+                  : "border-[#d4d4d4] bg-white text-[#525252] hover:border-[#6f665c]"
               }`}
             >
               {option.label}
@@ -189,15 +189,15 @@ function QuotesPage() {
           return (
             <Fragment key={quote.id}>
               <article
-              className={`grid gap-5 rounded-xl border bg-white p-5 shadow-[0_4px_20px_rgba(43,33,24,0.08)] lg:grid-cols-[1.1fr_1.4fr_260px] ${
-                isSelected || isLowestPrice ? "border-[#854f19]" : "border-[#ead8ca]"
+              className={`grid gap-5 rounded-xl border bg-white p-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] lg:grid-cols-[1.1fr_1.4fr_260px] ${
+                isSelected || isLowestPrice ? "border-[#6f665c]" : "border-[#e5e5e5]"
               }`}
             >
               <div>
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h2 className="text-xl font-semibold text-[#231a11]">{quote.workshop.name}</h2>
-                    <p className="mt-1 flex items-center gap-1.5 text-sm text-[#52443a]">
+                    <h2 className="text-xl font-semibold text-[#0a0a0a]">{quote.workshop.name}</h2>
+                    <p className="mt-1 flex items-center gap-1.5 text-sm text-[#525252]">
                       <MapPin className="size-4" />
                       {quote.workshop.location}
                     </p>
@@ -212,26 +212,26 @@ function QuotesPage() {
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   {quote.tags.map((tag) => (
-                    <Badge key={tag} className="rounded-md bg-[#fcdba1] text-[#735b2d]">
+                    <Badge key={tag} className="rounded-md bg-[#e8e5df] text-[#525252]">
                       {tag}
                     </Badge>
                   ))}
-                  {isSelected && <Badge className="rounded-md bg-[#854f19] text-white">Đang chọn</Badge>}
+                  {isSelected && <Badge className="rounded-md bg-[#0a0a0a] text-white">Đang chọn</Badge>}
                 </div>
 
-                <div className="mt-5 grid gap-3 text-sm text-[#52443a] sm:grid-cols-2">
+                <div className="mt-5 grid gap-3 text-sm text-[#525252] sm:grid-cols-2">
                   <span className="flex items-center gap-2">
-                    <Star className="size-4 text-[#b7791f]" />
+                    <Star className="size-4 text-[#6f665c]" />
                     {quote.workshop.rating} / 5 đánh giá
                   </span>
                   <span className="flex items-center gap-2">
-                    <Hammer className="size-4 text-[#854f19]" />
+                    <Hammer className="size-4 text-[#6f665c]" />
                     {quote.workshop.completedOrders} đơn đã làm
                   </span>
                 </div>
 
-                <div className="mt-5 rounded-lg border border-[#ead8ca] bg-[#fffaf6] p-4 text-sm text-[#52443a]">
-                  <p className="font-semibold text-[#231a11]">Hồ sơ xưởng</p>
+                <div className="mt-5 rounded-lg border border-[#e5e5e5] bg-[#fafafa] p-4 text-sm text-[#525252]">
+                  <p className="font-semibold text-[#0a0a0a]">Hồ sơ xưởng</p>
                   <div className="mt-3 grid gap-2">
                     <p>Số điện thoại/Zalo: <strong>{quote.workshop.zalo}</strong></p>
                     <p>Thế mạnh: {quote.workshop.specialties.join(", ")}</p>
@@ -242,30 +242,30 @@ function QuotesPage() {
                 </div>
               </div>
 
-              <div className="grid gap-4 text-sm text-[#52443a] md:grid-cols-2">
-                <div className="rounded-lg border border-[#ead8ca] bg-[#fff8f5] p-4">
-                  <p className="flex items-center gap-2 font-semibold text-[#231a11]">
-                    <CheckCircle2 className="size-4 text-[#854f19]" />
+              <div className="grid gap-4 text-sm text-[#525252] md:grid-cols-2">
+                <div className="rounded-lg border border-[#e5e5e5] bg-[#fafafa] p-4">
+                  <p className="flex items-center gap-2 font-semibold text-[#0a0a0a]">
+                    <CheckCircle2 className="size-4 text-[#6f665c]" />
                     Vật liệu
                   </p>
                   <p className="mt-2 leading-6">{quote.materialNote}</p>
                 </div>
-                <div className="rounded-lg border border-[#ead8ca] bg-[#fff8f5] p-4">
-                  <p className="flex items-center gap-2 font-semibold text-[#231a11]">
-                    <Truck className="size-4 text-[#854f19]" />
+                <div className="rounded-lg border border-[#e5e5e5] bg-[#fafafa] p-4">
+                  <p className="flex items-center gap-2 font-semibold text-[#0a0a0a]">
+                    <Truck className="size-4 text-[#6f665c]" />
                     Giao và lắp đặt
                   </p>
                   <p className="mt-2 leading-6">{quote.deliveryNote}</p>
                 </div>
-                <div className="rounded-lg border border-[#ead8ca] bg-white p-4 md:col-span-2">
-                  <p className="flex items-center gap-2 font-semibold text-[#231a11]">
-                    <ShieldCheck className="size-4 text-[#854f19]" />
+                <div className="rounded-lg border border-[#e5e5e5] bg-white p-4 md:col-span-2">
+                  <p className="flex items-center gap-2 font-semibold text-[#0a0a0a]">
+                    <ShieldCheck className="size-4 text-[#6f665c]" />
                     Điểm tin cậy
                   </p>
                   <p className="mt-2 leading-6">{quote.trustNote}</p>
                 </div>
-                <div className="rounded-lg border border-[#ead8ca] bg-white p-4 md:col-span-2">
-                  <p className="font-semibold text-[#231a11]">Bảng báo giá chuẩn hóa</p>
+                <div className="rounded-lg border border-[#e5e5e5] bg-white p-4 md:col-span-2">
+                  <p className="font-semibold text-[#0a0a0a]">Bảng báo giá chuẩn hóa</p>
                   <dl className="mt-3 grid gap-2">
                     <div className="flex justify-between gap-4">
                       <dt>Giá vật liệu/gỗ</dt>
@@ -287,42 +287,42 @@ function QuotesPage() {
                       <dt>Lắp đặt</dt>
                       <dd className="font-semibold">{formatCurrency(breakdown.installationCost)}</dd>
                     </div>
-                    <div className="flex justify-between gap-4 border-t border-[#ead8ca] pt-2">
+                    <div className="flex justify-between gap-4 border-t border-[#e5e5e5] pt-2">
                       <dt>Đặt cọc dự kiến</dt>
                       <dd className="font-semibold">{formatCurrency(breakdown.deposit)}</dd>
                     </div>
                   </dl>
-                  <p className="mt-3 text-xs leading-5 text-[#735b2d]">Điều kiện phát sinh: {quote.conditionNote}</p>
+                  <p className="mt-3 text-xs leading-5 text-[#525252]">Điều kiện phát sinh: {quote.conditionNote}</p>
                 </div>
               </div>
 
-              <div className="flex flex-col justify-between gap-5 rounded-lg bg-[#fff1e8] p-4">
+              <div className="flex flex-col justify-between gap-5 rounded-lg bg-[#f7f7f5] p-4">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#847468]">Báo giá</p>
-                  <strong className="mt-2 block text-2xl text-[#854f19]">{formatCurrency(quote.price)}</strong>
-                  <Badge className="mt-3 rounded-md bg-white text-[#735b2d]">{quote.responseStatus}</Badge>
+                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#737373]">Báo giá</p>
+                  <strong className="mt-2 block text-2xl text-[#6f665c]">{formatCurrency(quote.price)}</strong>
+                  <Badge className="mt-3 rounded-md bg-white text-[#525252]">{quote.responseStatus}</Badge>
                 </div>
 
-                <dl className="space-y-3 text-sm text-[#52443a]">
+                <dl className="space-y-3 text-sm text-[#525252]">
                   <div className="flex justify-between gap-3">
                     <dt className="flex items-center gap-2">
                       <Clock3 className="size-4" />
                       Thời gian
                     </dt>
-                    <dd className="font-semibold text-[#231a11]">{quote.leadTime}</dd>
+                    <dd className="font-semibold text-[#0a0a0a]">{quote.leadTime}</dd>
                   </div>
                   <div className="flex justify-between gap-3">
                     <dt className="flex items-center gap-2">
                       <CalendarDays className="size-4" />
                       Bảo hành
                     </dt>
-                    <dd className="font-semibold text-[#231a11]">{quote.warranty}</dd>
+                    <dd className="font-semibold text-[#0a0a0a]">{quote.warranty}</dd>
                   </div>
                 </dl>
 
                 <div className="flex flex-wrap gap-2">
-                  {isLowestPrice && <Badge className="rounded-md bg-[#854f19] text-white">Giá tốt nhất</Badge>}
-                  {isFastest && <Badge className="rounded-md bg-[#fcdba1] text-[#735b2d]">Nhanh nhất</Badge>}
+                  {isLowestPrice && <Badge className="rounded-md bg-[#0a0a0a] text-white">Giá tốt nhất</Badge>}
+                  {isFastest && <Badge className="rounded-md bg-[#e8e5df] text-[#525252]">Nhanh nhất</Badge>}
                   {isLongestWarranty && <Badge className="rounded-md bg-[#eef8f1] text-[#2f7d4e]">Bảo hành dài nhất</Badge>}
                 </div>
 
@@ -333,8 +333,8 @@ function QuotesPage() {
                     isSelected
                       ? "bg-[#2f7d4e] hover:bg-[#25663f]"
                       : isLockedByOtherQuote
-                        ? "bg-[#c9b8a8] text-white"
-                        : "bg-[#854f19] hover:bg-[#7a4a22]"
+                        ? "bg-[#d4d4d4] text-white"
+                        : "bg-[#0a0a0a] hover:bg-[#262626]"
                   }`}
                   onClick={() => handleSelectQuote(quote.id)}
                 >
@@ -347,13 +347,13 @@ function QuotesPage() {
                 <div
                   ref={confirmationRef}
                   className={`scroll-mt-6 rounded-xl border p-5 text-sm leading-7 ${
-                    details.finalConfirmed ? "border-[#a8d5b5] bg-[#eef8f1] text-[#2f7d4e]" : "border-[#e6c27a] bg-[#fff7e6] text-[#8a5a00]"
+                    details.finalConfirmed ? "border-[#a8d5b5] bg-[#eef8f1] text-[#2f7d4e]" : "border-[#d4d4d4] bg-[#f7f7f5] text-[#6f665c]"
                   }`}
                 >
                   <strong>Đã chọn {quote.workshop.name}.</strong> Báo giá {formatCurrency(quote.price)}, thời gian {quote.leadTime},
                   bảo hành {quote.warranty}. Muốn đổi xưởng, hãy hủy lựa chọn hiện tại trước.
                   {!details.finalConfirmed && (
-                    <p className="mt-2 font-semibold text-[#231a11]">
+                    <p className="mt-2 font-semibold text-[#0a0a0a]">
                       Cần chốt bảng thông số cuối trước khi xác nhận báo giá và tiếp tục đặt cọc.
                     </p>
                   )}
@@ -379,14 +379,14 @@ function QuotesPage() {
               )}
 
               {details.finalConfirmed && isSelected && (
-                <div className="rounded-xl border border-[#854f19] bg-[#fff1e8] p-5 text-sm leading-7 text-[#735b2d]">
-                  <strong className="text-[#231a11]">Bản xác nhận báo giá đã được ghi nhận.</strong>
+                <div className="rounded-xl border border-[#6f665c] bg-[#f7f7f5] p-5 text-sm leading-7 text-[#525252]">
+                  <strong className="text-[#0a0a0a]">Bản xác nhận báo giá đã được ghi nhận.</strong>
                   <p className="mt-1">
                     Kích thước, vật liệu, màu, công năng, phụ kiện, báo giá, thời gian hoàn thành, bảo hành và điều kiện phát sinh
                     cần được xưởng đo/kiểm tra lại trước khi sản xuất.
                   </p>
                   <Link to={orderProgressPath}>
-                    <Button className="mt-4 bg-[#854f19] hover:bg-[#7a4a22]">
+                    <Button className="mt-4 bg-[#0a0a0a] hover:bg-[#262626]">
                       Tiếp tục đặt cọc và theo dõi đơn hàng
                     </Button>
                   </Link>
@@ -397,7 +397,7 @@ function QuotesPage() {
         })}
       </div>
 
-      <div className="rounded-xl border border-[#e6c27a] bg-[#fff7e6] p-5 text-sm leading-7 text-[#8a5a00]">
+      <div className="rounded-xl border border-[#d4d4d4] bg-[#f7f7f5] p-5 text-sm leading-7 text-[#6f665c]">
         Các mức giá là dữ liệu tham khảo. Báo giá cuối cùng cần được xưởng xác nhận sau khi khảo sát hiện trạng,
         phụ kiện, vận chuyển và điều kiện lắp đặt.
       </div>

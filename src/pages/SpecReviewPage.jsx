@@ -56,15 +56,15 @@ function BriefTable({ rows, compact = false }) {
   }
 
   return (
-    <div className={compact ? "woodspec-print-table" : "overflow-hidden rounded-xl border border-[#ead8ca]"}>
+    <div className={compact ? "woodspec-print-table" : "overflow-hidden rounded-xl border border-[#e5e5e5]"}>
       <table className={compact ? "" : "w-full border-collapse text-sm"}>
         <tbody>
           {rows.map((row) => (
-            <tr key={row.label} className={compact ? "" : "border-b border-[#ead8ca] last:border-b-0"}>
-              <th className={compact ? "" : "w-52 bg-[#fff1e8] px-4 py-3 text-left align-top font-semibold text-[#735b2d]"}>
+            <tr key={row.label} className={compact ? "" : "border-b border-[#e5e5e5] last:border-b-0"}>
+              <th className={compact ? "" : "w-52 bg-[#f7f7f5] px-4 py-3 text-left align-top font-semibold text-[#525252]"}>
                 {row.label}
               </th>
-              <td className={compact ? "" : "px-4 py-3 leading-6 text-[#3b3028]"}>{row.value}</td>
+              <td className={compact ? "" : "px-4 py-3 leading-6 text-[#171717]"}>{row.value}</td>
             </tr>
           ))}
         </tbody>
@@ -238,23 +238,23 @@ function SpecReviewPage() {
       <section className="mx-auto max-w-7xl space-y-8 px-4 py-8 text-left lg:px-10">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-lg border border-[#ead8ca] bg-[#fff1e8] px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#854f19]">
+            <div className="inline-flex items-center gap-2 rounded-lg border border-[#e5e5e5] bg-[#f7f7f5] px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#6f665c]">
               <FileText className="size-4" />
               Bảng thông số
             </div>
-            <h1 className="mt-4 text-3xl font-bold tracking-normal text-[#231a11] md:text-4xl">
+            <h1 className="mt-4 text-3xl font-bold tracking-normal text-[#0a0a0a] md:text-4xl">
               Rà soát yêu cầu sản phẩm
             </h1>
-            <p className="mt-2 max-w-2xl text-sm leading-7 text-[#52443a]">
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-[#525252]">
               Kiểm tra cấu hình đã chọn, ngữ cảnh khách hàng đã trao đổi với trợ lý và các thông tin cần gửi xưởng báo giá.
             </p>
           </div>
           <div className="flex gap-3">
-            <Button variant="outline" className="border-[#d7c3b5] bg-white text-[#735b2d]" onClick={handlePrintDocument}>
+            <Button variant="outline" className="border-[#d4d4d4] bg-white text-[#525252]" onClick={handlePrintDocument}>
               <Printer />
               In tài liệu
             </Button>
-            <Button variant="outline" className="border-[#d7c3b5] bg-white text-[#735b2d]" onClick={handleShareDocument}>
+            <Button variant="outline" className="border-[#d4d4d4] bg-white text-[#525252]" onClick={handleShareDocument}>
               <Send />
               Chia sẻ
             </Button>
@@ -263,51 +263,51 @@ function SpecReviewPage() {
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
           <div className="space-y-6">
-            <article className="rounded-xl border border-[#ead8ca] bg-white p-6 shadow-[0_4px_20px_rgba(43,33,24,0.08)]">
-              <div className="flex flex-col gap-4 border-b border-[#ead8ca] pb-5 md:flex-row md:items-start md:justify-between">
+            <article className="rounded-xl border border-[#e5e5e5] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+              <div className="flex flex-col gap-4 border-b border-[#e5e5e5] pb-5 md:flex-row md:items-start md:justify-between">
                 <div>
-                  <p className="text-sm font-semibold text-[#735b2d]">{configuration.product.name}</p>
-                  <h2 className="mt-1 text-2xl font-semibold text-[#231a11]">{configuration.productName}</h2>
+                  <p className="text-sm font-semibold text-[#525252]">{configuration.product.name}</p>
+                  <h2 className="mt-1 text-2xl font-semibold text-[#0a0a0a]">{configuration.productName}</h2>
                 </div>
                 <div className="text-left md:text-right">
-                  <p className="text-xs font-bold uppercase tracking-wide text-[#847468]">Giá ước tính</p>
-                  <strong className="text-2xl text-[#854f19]">{formatCurrency(configuration.estimatedPrice)}</strong>
+                  <p className="text-xs font-bold uppercase tracking-wide text-[#737373]">Giá ước tính</p>
+                  <strong className="text-2xl text-[#6f665c]">{formatCurrency(configuration.estimatedPrice)}</strong>
                 </div>
               </div>
 
               <div className="mt-5 grid gap-5 md:grid-cols-2">
                 <dl className="space-y-3 text-sm">
                   <div className="flex justify-between gap-4">
-                    <dt className="text-[#847468]">Rộng</dt>
+                    <dt className="text-[#737373]">Rộng</dt>
                     <dd className="font-bold">{formatCmFromMm(dimensions.width)} cm</dd>
                   </div>
                   <div className="flex justify-between gap-4">
-                    <dt className="text-[#847468]">Cao</dt>
+                    <dt className="text-[#737373]">Cao</dt>
                     <dd className="font-bold">{formatCmFromMm(dimensions.height)} cm</dd>
                   </div>
                   <div className="flex justify-between gap-4">
-                    <dt className="text-[#847468]">Sâu</dt>
+                    <dt className="text-[#737373]">Sâu</dt>
                     <dd className="font-bold">{formatCmFromMm(dimensions.depth)} cm</dd>
                   </div>
                 </dl>
                 <dl className="space-y-3 text-sm">
                   <div className="flex justify-between gap-4">
-                    <dt className="text-[#847468]">Vật liệu chính</dt>
+                    <dt className="text-[#737373]">Vật liệu chính</dt>
                     <dd className="text-right font-bold">{configuration.material.name}</dd>
                   </div>
                   <div className="flex justify-between gap-4">
-                    <dt className="text-[#847468]">Màu hoàn thiện</dt>
+                    <dt className="text-[#737373]">Màu hoàn thiện</dt>
                     <dd className="font-bold">{configuration.color.name}</dd>
                   </div>
                 </dl>
               </div>
             </article>
 
-            <article className="rounded-xl border border-[#ead8ca] bg-white p-6 shadow-[0_4px_20px_rgba(43,33,24,0.08)]">
-              <div className="border-b border-[#ead8ca] pb-5">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#a35c36]">Brief từ cuộc trò chuyện AI</p>
-                <h2 className="mt-2 text-2xl font-semibold text-[#231a11]">Ngữ cảnh gửi xưởng</h2>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-[#635348]">
+            <article className="rounded-xl border border-[#e5e5e5] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+              <div className="border-b border-[#e5e5e5] pb-5">
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#6f665c]">Brief từ cuộc trò chuyện AI</p>
+                <h2 className="mt-2 text-2xl font-semibold text-[#0a0a0a]">Ngữ cảnh gửi xưởng</h2>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-[#525252]">
                   Phần này ghi lại nhu cầu khách đã trao đổi với trợ lý để xưởng hiểu mục đích sử dụng trước khi đọc thông số chi tiết.
                 </p>
               </div>
@@ -318,12 +318,12 @@ function SpecReviewPage() {
 
             <CustomerRequirementSection sections={displaySpec.customerRequirements} />
 
-            <article className="rounded-xl border border-[#ead8ca] bg-white p-6 shadow-[0_4px_20px_rgba(43,33,24,0.08)]">
-              <h2 className="text-2xl font-semibold text-[#231a11]">Lưu ý gửi xưởng</h2>
-              <div className="mt-5 grid gap-4 text-sm text-[#52443a] md:grid-cols-2">
+            <article className="rounded-xl border border-[#e5e5e5] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+              <h2 className="text-2xl font-semibold text-[#0a0a0a]">Lưu ý gửi xưởng</h2>
+              <div className="mt-5 grid gap-4 text-sm text-[#525252] md:grid-cols-2">
                 {notes.map((item) => (
                   <p key={item} className="flex gap-2">
-                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[#854f19]" />
+                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[#6f665c]" />
                     {item}
                   </p>
                 ))}
@@ -332,8 +332,8 @@ function SpecReviewPage() {
           </div>
 
           <aside className="space-y-5">
-            <div className="rounded-xl border border-[#ead8ca] bg-white p-6 shadow-[0_4px_20px_rgba(43,33,24,0.08)]">
-              <h2 className="text-2xl font-semibold text-[#231a11]">Tóm tắt gửi báo giá</h2>
+            <div className="rounded-xl border border-[#e5e5e5] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+              <h2 className="text-2xl font-semibold text-[#0a0a0a]">Tóm tắt gửi báo giá</h2>
               <dl className="mt-5 space-y-3 text-sm">
                 <div className="flex justify-between gap-4">
                   <dt>Vật liệu</dt>
@@ -355,26 +355,26 @@ function SpecReviewPage() {
                   <dt>Trạng thái</dt>
                   <dd className="font-semibold">{statusLabel}</dd>
                 </div>
-                <div className="flex justify-between border-t border-[#ead8ca] pt-4 text-lg font-bold text-[#854f19]">
+                <div className="flex justify-between border-t border-[#e5e5e5] pt-4 text-lg font-bold text-[#6f665c]">
                   <dt>Tổng ước tính</dt>
                   <dd>{formatCurrency(configuration.estimatedPrice)}</dd>
                 </div>
               </dl>
-              <Button className="mt-6 w-full bg-[#854f19] hover:bg-[#7a4a22]" onClick={handleSubmitQuoteRequest}>
+              <Button className="mt-6 w-full bg-[#0a0a0a] hover:bg-[#262626]" onClick={handleSubmitQuoteRequest}>
                 Đặt đồ / nhận báo giá
               </Button>
               <Link to={configuratorPath}>
-                <Button variant="outline" className="mt-3 w-full border-[#d7c3b5] bg-white text-[#854f19]">
+                <Button variant="outline" className="mt-3 w-full border-[#d4d4d4] bg-white text-[#6f665c]">
                   <SlidersHorizontal />
                   Sửa cấu hình
                 </Button>
               </Link>
-              <p className="mt-4 text-center text-xs font-semibold text-[#847468]">
+              <p className="mt-4 text-center text-xs font-semibold text-[#737373]">
                 Bảng này chỉ thu thập yêu cầu ở mức khách hàng hiểu được.
               </p>
             </div>
 
-            <div className="rounded-xl bg-[#fff1e8] p-5 text-sm leading-6 text-[#735b2d]">
+            <div className="rounded-xl bg-[#f7f7f5] p-5 text-sm leading-6 text-[#525252]">
               <strong>Chi tiết chuyên môn được ẩn</strong>
               <p className="mt-2">
                 Xưởng sẽ tự xử lý độ dày ván, liên kết, mã phụ kiện, dung sai, bản vẽ sản xuất và danh sách cắt sau khi nhận yêu cầu.

@@ -1,7 +1,7 @@
 import { Cable, DoorOpen, GripVertical, Layers3, PanelTop, Wind } from "lucide-react"
 
 const selectClass =
-  "h-10 w-full rounded-lg border border-[#d7c3b5] bg-white px-3 text-sm font-semibold text-[#231a11] outline-none focus:border-[#854f19]"
+  "h-10 w-full rounded-lg border border-[#d4d4d4] bg-white px-3 text-sm font-semibold text-[#0a0a0a] outline-none focus:border-[#6f665c]"
 
 const detailGroups = [
   {
@@ -56,7 +56,7 @@ function ToggleButton({ active, children, onClick }) {
       type="button"
       onClick={onClick}
       className={`rounded-lg border px-3 py-2 text-sm font-semibold transition ${
-        active ? "border-[#854f19] bg-[#fff1e8] text-[#854f19]" : "border-[#d7c3b5] bg-white text-[#735b2d] hover:border-[#854f19]"
+        active ? "border-[#6f665c] bg-[#f7f7f5] text-[#6f665c]" : "border-[#d4d4d4] bg-white text-[#525252] hover:border-[#6f665c]"
       }`}
     >
       {children}
@@ -97,10 +97,10 @@ function InteriorDetailForm({ details = {}, dimensions, onChange }) {
   return (
     <div className="space-y-5">
       <div>
-        <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-[#847468]">
+        <h2 className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-[#737373]">
           Chi tiết bản vẽ
         </h2>
-        <p className="text-xs leading-5 text-[#735b2d]">
+        <p className="text-xs leading-5 text-[#525252]">
           Tinh chỉnh các phần nhìn thấy trên mô hình 3D trước khi gửi thông số.
         </p>
       </div>
@@ -111,8 +111,8 @@ function InteriorDetailForm({ details = {}, dimensions, onChange }) {
 
           return (
             <label key={group.key} className="space-y-2">
-              <span className="flex items-center gap-2 text-sm font-semibold text-[#52443a]">
-                <Icon className="size-4 text-[#854f19]" />
+              <span className="flex items-center gap-2 text-sm font-semibold text-[#525252]">
+                <Icon className="size-4 text-[#6f665c]" />
                 {group.label}
               </span>
               <select value={details[group.key] ?? group.options[0][0]} onChange={(event) => updateField(group.key, event.target.value)} className={selectClass}>
@@ -127,36 +127,36 @@ function InteriorDetailForm({ details = {}, dimensions, onChange }) {
         })}
       </div>
 
-      <div className="grid gap-3 rounded-lg border border-[#ead8ca] bg-[#fffaf6] p-3">
-        <p className="text-sm font-semibold text-[#231a11]">Thông số cấu tạo</p>
-        <p className="rounded-lg bg-white px-3 py-2 text-sm leading-6 text-[#735b2d]">
+      <div className="grid gap-3 rounded-lg border border-[#e5e5e5] bg-[#fafafa] p-3">
+        <p className="text-sm font-semibold text-[#0a0a0a]">Thông số cấu tạo</p>
+        <p className="rounded-lg bg-white px-3 py-2 text-sm leading-6 text-[#525252]">
           Một ô ước tính: <strong>{cellSize.width} x {cellSize.height} x {cellSize.depth} mm</strong>
         </p>
         <label className="space-y-2">
-          <span className="text-sm font-semibold text-[#52443a]">Số ô theo chiều ngang</span>
+          <span className="text-sm font-semibold text-[#525252]">Số ô theo chiều ngang</span>
           <input
             type="number"
             min="1"
             max="6"
             value={details.compartmentColumns ?? 3}
             onChange={(event) => updateNumber("compartmentColumns", event.target.value)}
-            className="h-10 w-full rounded-lg border border-[#d7c3b5] bg-white px-3 text-sm font-semibold text-[#231a11] outline-none focus:border-[#854f19]"
+            className="h-10 w-full rounded-lg border border-[#d4d4d4] bg-white px-3 text-sm font-semibold text-[#0a0a0a] outline-none focus:border-[#6f665c]"
           />
         </label>
         <label className="space-y-2">
-          <span className="text-sm font-semibold text-[#52443a]">Số ô theo chiều cao</span>
+          <span className="text-sm font-semibold text-[#525252]">Số ô theo chiều cao</span>
           <input
             type="number"
             min="1"
             max="8"
             value={details.compartmentRows ?? 3}
             onChange={(event) => updateNumber("compartmentRows", event.target.value)}
-            className="h-10 w-full rounded-lg border border-[#d7c3b5] bg-white px-3 text-sm font-semibold text-[#231a11] outline-none focus:border-[#854f19]"
+            className="h-10 w-full rounded-lg border border-[#d4d4d4] bg-white px-3 text-sm font-semibold text-[#0a0a0a] outline-none focus:border-[#6f665c]"
           />
         </label>
         <div className="grid gap-3 sm:grid-cols-3">
           <label className="space-y-2">
-            <span className="text-sm font-semibold text-[#52443a]">Dày ván</span>
+            <span className="text-sm font-semibold text-[#525252]">Dày ván</span>
             <input
               type="number"
               min="12"
@@ -164,11 +164,11 @@ function InteriorDetailForm({ details = {}, dimensions, onChange }) {
               step="1"
               value={details.boardThickness ?? 18}
               onChange={(event) => updateNumber("boardThickness", event.target.value)}
-              className="h-10 w-full rounded-lg border border-[#d7c3b5] bg-white px-3 text-sm font-semibold text-[#231a11] outline-none focus:border-[#854f19]"
+              className="h-10 w-full rounded-lg border border-[#d4d4d4] bg-white px-3 text-sm font-semibold text-[#0a0a0a] outline-none focus:border-[#6f665c]"
             />
           </label>
           <label className="space-y-2">
-            <span className="text-sm font-semibold text-[#52443a]">Dày cánh</span>
+            <span className="text-sm font-semibold text-[#525252]">Dày cánh</span>
             <input
               type="number"
               min="12"
@@ -176,11 +176,11 @@ function InteriorDetailForm({ details = {}, dimensions, onChange }) {
               step="1"
               value={details.doorThickness ?? 18}
               onChange={(event) => updateNumber("doorThickness", event.target.value)}
-              className="h-10 w-full rounded-lg border border-[#d7c3b5] bg-white px-3 text-sm font-semibold text-[#231a11] outline-none focus:border-[#854f19]"
+              className="h-10 w-full rounded-lg border border-[#d4d4d4] bg-white px-3 text-sm font-semibold text-[#0a0a0a] outline-none focus:border-[#6f665c]"
             />
           </label>
           <label className="space-y-2">
-            <span className="text-sm font-semibold text-[#52443a]">Dày đợt/kệ</span>
+            <span className="text-sm font-semibold text-[#525252]">Dày đợt/kệ</span>
             <input
               type="number"
               min="12"
@@ -188,7 +188,7 @@ function InteriorDetailForm({ details = {}, dimensions, onChange }) {
               step="1"
               value={details.shelfThickness ?? 18}
               onChange={(event) => updateNumber("shelfThickness", event.target.value)}
-              className="h-10 w-full rounded-lg border border-[#d7c3b5] bg-white px-3 text-sm font-semibold text-[#231a11] outline-none focus:border-[#854f19]"
+              className="h-10 w-full rounded-lg border border-[#d4d4d4] bg-white px-3 text-sm font-semibold text-[#0a0a0a] outline-none focus:border-[#6f665c]"
             />
           </label>
         </div>

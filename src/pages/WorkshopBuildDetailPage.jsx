@@ -1,4 +1,4 @@
-﻿import { ArrowRight, Camera, Check, ClipboardList, CreditCard, Play } from "lucide-react"
+import { ArrowRight, Camera, Check, ClipboardList, CreditCard, Play } from "lucide-react"
 import { Link, useParams } from "react-router-dom"
 
 import { ROUTES } from "@/constants/routes"
@@ -54,8 +54,8 @@ function WorkshopBuildDetailPage() {
                 onClick={() => confirmDeposit(project.id)}
                 className="mt-5 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 font-semibold text-primary-foreground shadow-gallery-sm transition duration-200 hover:bg-foreground"
               >
-                Xác nhận đã nhận cọc
-                <ArrowRight className="size-4" />
+                <Check className="size-4" />
+                Xác nhận
               </button>
             </WorkshopCard>
           ) : null}
@@ -74,7 +74,7 @@ function WorkshopBuildDetailPage() {
                 className="mt-5 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 font-semibold text-primary-foreground shadow-gallery-sm transition duration-200 hover:bg-foreground"
               >
                 <Play className="size-4" />
-                Bắt đầu sản xuất
+                Bắt đầu
               </button>
             </WorkshopCard>
           ) : null}
@@ -137,7 +137,7 @@ function WorkshopBuildDetailPage() {
                     to={ROUTES.workshopHandoverDetail(project.id)}
                     className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 font-semibold text-primary-foreground shadow-gallery-sm transition duration-200 hover:bg-foreground"
                   >
-                    Chuyển sang bàn giao
+                    Bàn giao
                     <ArrowRight className="size-4" />
                   </Link>
                 </div>
@@ -153,11 +153,11 @@ function WorkshopBuildDetailPage() {
             <p className="mt-1 text-sm text-muted-foreground">Ảnh giúp khách yên tâm và giảm hỏi lại.</p>
             <div className="mt-4 grid gap-4 md:grid-cols-4">
               {[1, 2, 3].map((item) => (
-                <div key={item} className="aspect-[4/3] rounded-lg bg-[linear-gradient(135deg,#e7dac8,#fffdf8_45%,#d6ded4)]" />
+                <div key={item} className="aspect-[4/3] rounded-lg bg-[linear-gradient(135deg,#f5f5f4,#ffffff_45%,#e5e5e5)]" />
               ))}
               <button className="flex aspect-[4/3] flex-col items-center justify-center rounded-lg border border-dashed border-primary/35 bg-surface-elevated text-primary transition duration-200 hover:bg-muted">
                 <Camera className="size-7" />
-                <span className="mt-2 text-sm font-medium">Thêm ảnh</span>
+                <span className="mt-2 text-sm font-medium">Ảnh</span>
               </button>
             </div>
           </WorkshopCard>
@@ -182,7 +182,7 @@ function WorkshopBuildDetailPage() {
             </dl>
             <Link to={ROUTES.workshopRequests} className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary">
               <ClipboardList className="size-4" />
-              Xem brief đầy đủ
+              Brief
             </Link>
           </WorkshopCard>
 

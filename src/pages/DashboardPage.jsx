@@ -1,4 +1,4 @@
-﻿import { ArrowRight, BadgeCheck, ReceiptText, Users, Wrench } from "lucide-react"
+import { ArrowRight, BadgeCheck, ReceiptText, Users, Wrench } from "lucide-react"
 import { Link } from "react-router-dom"
 
 import { ROUTES } from "@/constants/routes"
@@ -27,7 +27,7 @@ function RequestRow({ row }) {
         <p className="truncate text-sm text-muted-foreground">{row.item}</p>
         <StatusPill tone={row.statusTone}>{row.status}</StatusPill>
       </div>
-      <span className="flex shrink-0 items-center gap-1 text-sm font-medium text-primary">
+      <span className="flex shrink-0 items-center gap-1 whitespace-nowrap text-sm font-medium text-primary">
         {row.nextStep}
         <ArrowRight className="size-4" />
       </span>
@@ -71,7 +71,7 @@ function DashboardPage() {
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-primary">
               <Wrench className="size-4" />
-              Bắt đầu tại đây
+              Bắt đầu
             </span>
             <h2 className="mt-4 text-3xl font-bold text-foreground">
               Bạn có {openRows.length} yêu cầu mới cần xem lại.
@@ -85,7 +85,7 @@ function DashboardPage() {
               to={getRowPath(leadRow)}
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 font-semibold text-primary-foreground shadow-gallery-md transition duration-200 hover:bg-foreground"
             >
-              Tiếp tục với {leadRow.customer}
+              Tiếp tục
               <ArrowRight className="size-5" />
             </Link>
           ) : null}

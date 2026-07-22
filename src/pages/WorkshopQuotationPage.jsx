@@ -1,4 +1,4 @@
-﻿import { ArrowRight, CheckCircle2, Send } from "lucide-react"
+import { ArrowRight, CheckCircle2, Send } from "lucide-react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import { ROUTES } from "@/constants/routes"

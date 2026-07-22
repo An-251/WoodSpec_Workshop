@@ -1,4 +1,4 @@
-﻿import { ArrowRight, Check, MapPin, Star } from "lucide-react"
+import { ArrowRight, Check, MapPin, Star } from "lucide-react"
 import { Link, useParams } from "react-router-dom"
 
 import { ROUTES } from "@/constants/routes"

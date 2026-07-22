@@ -104,13 +104,13 @@ function NumberControl({ label, description, value, min, max, step = 1, suffix =
   }
 
   return (
-    <label className="block rounded-lg border border-[#ead8ca] bg-[#fffaf6] p-3">
+    <label className="block rounded-lg border border-[#e5e5e5] bg-[#fafafa] p-3">
       <span className="flex items-start justify-between gap-3">
         <span>
-          <span className="block text-sm font-semibold text-[#231a11]">{label}</span>
-          {description && <span className="mt-1 block text-xs leading-5 text-[#735b2d]">{description}</span>}
+          <span className="block text-sm font-semibold text-[#0a0a0a]">{label}</span>
+          {description && <span className="mt-1 block text-xs leading-5 text-[#525252]">{description}</span>}
         </span>
-        <span className="shrink-0 rounded-lg border border-[#d7c3b5] bg-white px-3 py-2 text-sm font-bold text-[#854f19]">
+        <span className="shrink-0 rounded-lg border border-[#d4d4d4] bg-white px-3 py-2 text-sm font-bold text-[#6f665c]">
           {Number.isInteger(displayValue) ? displayValue : displayValue.toFixed(1)} {suffix}
         </span>
       </span>
@@ -121,7 +121,7 @@ function NumberControl({ label, description, value, min, max, step = 1, suffix =
         step={displayStep}
         value={displayValue}
         onChange={(event) => handleChange(event.target.value)}
-        className="mt-3 w-full accent-[#854f19]"
+        className="mt-3 w-full accent-[#6f665c]"
       />
       <input
         type="number"
@@ -130,7 +130,7 @@ function NumberControl({ label, description, value, min, max, step = 1, suffix =
         step={displayStep}
         value={displayValue}
         onChange={(event) => handleChange(event.target.value)}
-        className="mt-2 h-10 w-full rounded-lg border border-[#d7c3b5] bg-white px-3 text-sm font-semibold text-[#231a11] outline-none focus:border-[#854f19]"
+        className="mt-2 h-10 w-full rounded-lg border border-[#d4d4d4] bg-white px-3 text-sm font-semibold text-[#0a0a0a] outline-none focus:border-[#6f665c]"
       />
     </label>
   )
@@ -139,11 +139,11 @@ function NumberControl({ label, description, value, min, max, step = 1, suffix =
 function SelectControl({ label, value, options, onChange }) {
   return (
     <label className="block space-y-2">
-      <span className="text-sm font-semibold text-[#52443a]">{label}</span>
+      <span className="text-sm font-semibold text-[#525252]">{label}</span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="h-10 w-full rounded-lg border border-[#d7c3b5] bg-white px-3 text-sm font-semibold text-[#231a11] outline-none focus:border-[#854f19]"
+        className="h-10 w-full rounded-lg border border-[#d4d4d4] bg-white px-3 text-sm font-semibold text-[#0a0a0a] outline-none focus:border-[#6f665c]"
       >
         {options.map(([optionValue, optionLabel]) => (
           <option key={optionValue} value={optionValue}>
@@ -161,7 +161,7 @@ function ToggleControl({ active, children, onClick }) {
       type="button"
       onClick={onClick}
       className={`flex items-center justify-between rounded-lg border px-3 py-3 text-left text-sm font-semibold transition ${
-        active ? "border-[#854f19] bg-[#fff1e8] text-[#854f19]" : "border-[#d7c3b5] bg-white text-[#735b2d] hover:border-[#854f19]"
+        active ? "border-[#6f665c] bg-[#f7f7f5] text-[#6f665c]" : "border-[#d4d4d4] bg-white text-[#525252] hover:border-[#6f665c]"
       }`}
     >
       {children}
@@ -214,7 +214,7 @@ function PartInspectorPanel({
       return (
         <div className="space-y-5">
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-[#231a11]">Vật liệu chính</h3>
+            <h3 className="mb-3 text-sm font-semibold text-[#0a0a0a]">Vật liệu chính</h3>
             <div className="grid gap-2">
               {materialOptions.map((item) => (
                 <button
@@ -222,18 +222,18 @@ function PartInspectorPanel({
                   type="button"
                   onClick={() => onMaterialChange(item.id)}
                   className={`rounded-lg border p-3 text-left text-sm transition ${
-                    item.id === material.id ? "border-[#854f19] bg-[#fff1e8]" : "border-[#d7c3b5] bg-white hover:border-[#854f19]"
+                    item.id === material.id ? "border-[#6f665c] bg-[#f7f7f5]" : "border-[#d4d4d4] bg-white hover:border-[#6f665c]"
                   }`}
                 >
-                  <span className="font-semibold text-[#231a11]">{item.name}</span>
-                  <span className="mt-1 block text-xs leading-5 text-[#735b2d]">{item.description}</span>
+                  <span className="font-semibold text-[#0a0a0a]">{item.name}</span>
+                  <span className="mt-1 block text-xs leading-5 text-[#525252]">{item.description}</span>
                 </button>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 className="mb-3 text-sm font-semibold text-[#231a11]">Màu hoàn thiện</h3>
+            <h3 className="mb-3 text-sm font-semibold text-[#0a0a0a]">Màu hoàn thiện</h3>
             <div className="grid grid-cols-3 gap-2">
               {material.colors.map((item) => (
                 <button
@@ -242,11 +242,11 @@ function PartInspectorPanel({
                   title={item.name}
                   onClick={() => onColorChange(item.id)}
                   className={`rounded-lg border bg-white p-2 text-left transition ${
-                    item.id === color.id ? "border-2 border-[#854f19]" : "border-[#d7c3b5] hover:border-[#854f19]"
+                    item.id === color.id ? "border-2 border-[#6f665c]" : "border-[#d4d4d4] hover:border-[#6f665c]"
                   }`}
                 >
                   <span className="block h-10 rounded-md border border-black/10 shadow-inner" style={{ backgroundColor: item.hex }} />
-                  <span className="mt-2 block text-xs font-semibold text-[#52443a]">{item.name}</span>
+                  <span className="mt-2 block text-xs font-semibold text-[#525252]">{item.name}</span>
                 </button>
               ))}
             </div>
@@ -319,7 +319,7 @@ function PartInspectorPanel({
 
       return (
         <div className="space-y-3">
-          <p className="rounded-lg bg-[#fffaf6] px-3 py-2 text-sm leading-6 text-[#735b2d]">
+          <p className="rounded-lg bg-[#fafafa] px-3 py-2 text-sm leading-6 text-[#525252]">
             {isGridShelf ? "Một ô ước tính" : "Một khoang ước tính"}:{" "}
             <strong>
               {formatCmFromMm(isGridShelf ? cellSize.width : Math.max(0, dimensions.width - (designDetails.boardThickness ?? 18) * 2))} x {formatCmFromMm(cellSize.height)} x {formatCmFromMm(cellSize.depth)} cm
@@ -395,7 +395,7 @@ function PartInspectorPanel({
     if (activePart === "seat") {
       if (!supportsSeatPad) {
         return (
-          <p className="rounded-lg bg-[#fffaf6] px-3 py-2 text-sm leading-6 text-[#735b2d]">
+          <p className="rounded-lg bg-[#fafafa] px-3 py-2 text-sm leading-6 text-[#525252]">
             Đệm ngồi chỉ phù hợp với tủ giày thấp. Sản phẩm hiện tại không cần thông số này.
           </p>
         )
@@ -423,11 +423,11 @@ function PartInspectorPanel({
 
   if (!isOpen) {
     return (
-      <aside className={`rounded-xl border border-[#ead8ca] bg-white p-3 text-left shadow-[0_4px_20px_rgba(43,33,24,0.08)] ${className}`}>
+      <aside className={`rounded-xl border border-[#e5e5e5] bg-white p-3 text-left shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${className}`}>
         <button
           type="button"
           onClick={onToggleOpen}
-          className="flex h-full min-h-40 w-full flex-col items-center justify-start gap-3 rounded-lg border border-[#ead8ca] bg-[#fffaf6] px-2 py-4 text-[#854f19] transition hover:border-[#854f19]"
+          className="flex h-full min-h-40 w-full flex-col items-center justify-start gap-3 rounded-lg border border-[#e5e5e5] bg-[#fafafa] px-2 py-4 text-[#6f665c] transition hover:border-[#6f665c]"
           aria-label="Mở bảng chỉnh chi tiết"
         >
           <PanelRightOpen className="size-5" />
@@ -439,22 +439,22 @@ function PartInspectorPanel({
   }
 
   return (
-    <aside className={`rounded-xl border border-[#ead8ca] bg-white p-5 text-left shadow-[0_4px_20px_rgba(43,33,24,0.08)] ${className}`}>
+    <aside className={`rounded-xl border border-[#e5e5e5] bg-white p-5 text-left shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${className}`}>
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="inline-flex items-center gap-2 rounded-lg border border-[#ead8ca] bg-[#fff1e8] px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#854f19]">
+          <p className="inline-flex items-center gap-2 rounded-lg border border-[#e5e5e5] bg-[#f7f7f5] px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#6f665c]">
             <SlidersHorizontal className="size-4" />
             Chỉnh chi tiết
           </p>
-          <h1 className="mt-3 text-2xl font-semibold text-[#231a11]">{selectedPartLabel}</h1>
-          <p className="mt-1 text-sm leading-6 text-[#735b2d]">
+          <h1 className="mt-3 text-2xl font-semibold text-[#0a0a0a]">{selectedPartLabel}</h1>
+          <p className="mt-1 text-sm leading-6 text-[#525252]">
             Bấm vào mô hình 3D hoặc chọn nhóm bên dưới để chỉnh đúng phần đang quan tâm.
           </p>
         </div>
         <button
           type="button"
           onClick={onToggleOpen}
-          className="inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-[#d7c3b5] bg-white text-[#854f19] transition hover:border-[#854f19] hover:bg-[#fff1e8]"
+          className="inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-[#d4d4d4] bg-white text-[#6f665c] transition hover:border-[#6f665c] hover:bg-[#f7f7f5]"
           aria-label="Đóng bảng chỉnh chi tiết"
         >
           <PanelRightClose className="size-4" />
@@ -468,7 +468,7 @@ function PartInspectorPanel({
             type="button"
             onClick={() => onSelectedPartChange(value)}
             className={`rounded-lg border px-3 py-2 text-left text-xs font-bold transition ${
-              activePart === value ? "border-[#854f19] bg-[#fff1e8] text-[#854f19]" : "border-[#d7c3b5] bg-white text-[#735b2d] hover:border-[#854f19]"
+              activePart === value ? "border-[#6f665c] bg-[#f7f7f5] text-[#6f665c]" : "border-[#d4d4d4] bg-white text-[#525252] hover:border-[#6f665c]"
             }`}
           >
             {label}
@@ -476,24 +476,24 @@ function PartInspectorPanel({
         ))}
       </div>
 
-      <div className="mt-5 rounded-lg border border-[#ead8ca] bg-[#fffaf6] p-4">
-        <p className="flex items-center gap-2 text-sm font-semibold text-[#231a11]">
-          <Info className="size-4 text-[#854f19]" />
+      <div className="mt-5 rounded-lg border border-[#e5e5e5] bg-[#fafafa] p-4">
+        <p className="flex items-center gap-2 text-sm font-semibold text-[#0a0a0a]">
+          <Info className="size-4 text-[#6f665c]" />
           {configuration.productName}
         </p>
-        <p className="mt-2 text-sm leading-6 text-[#735b2d]">
+        <p className="mt-2 text-sm leading-6 text-[#525252]">
           {formatCmFromMm(configuration.dimensions.width)} x {formatCmFromMm(configuration.dimensions.height)} x {formatCmFromMm(configuration.dimensions.depth)} cm · {configuration.material.name} · {configuration.color.name}
         </p>
       </div>
 
       <div className="mt-5 space-y-4">
         {activePart === "material" ? (
-          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#847468]">
+          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#737373]">
             <Palette className="size-4" />
             Bề mặt và màu sắc
           </p>
         ) : (
-          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#847468]">
+          <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[#737373]">
             <Ruler className="size-4" />
             Thông số có thể chỉnh
           </p>
@@ -503,7 +503,7 @@ function PartInspectorPanel({
 
       <Button
         type="button"
-        className="mt-5 w-full bg-[#854f19] hover:bg-[#7a4a22]"
+        className="mt-5 w-full bg-[#0a0a0a] hover:bg-[#262626]"
         onClick={() => {
           if (activePart === "request") {
             onReviewSpec?.()

@@ -1,13 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-heading: var(--font-sans);
-  --font-sans: "Geist Variable", sans-serif;
+  --font-heading: "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  --font-sans: "Be Vietnam Pro", Inter, system-ui, sans-serif;
+  --font-editorial: "Playfair Display", Georgia, serif;
+  --color-white: #ffffff;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -46,65 +48,65 @@
 
 :root {
   color-scheme: light;
-  font-family: "Geist Variable", system-ui, sans-serif;
+  font-family: "Be Vietnam Pro", Inter, system-ui, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --background: #f7f4ee;
-  --foreground: #11100e;
-  --card: #fffdf8;
-  --card-foreground: #11100e;
-  --popover: #fffdf8;
-  --popover-foreground: #11100e;
-  --primary: #1b1915;
-  --primary-foreground: #fffdf8;
-  --secondary: #ebe5db;
-  --secondary-foreground: #2a251f;
-  --muted: #ede8df;
-  --muted-foreground: #5f574e;
-  --accent: #9b643b;
-  --accent-foreground: #fffdf8;
-  --destructive: #b3261e;
-  --border: #d9d0c2;
-  --input: #d9d0c2;
-  --ring: #1b1915;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #0a0a0a;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f4;
+  --secondary-foreground: #171717;
+  --muted: #f7f7f5;
+  --muted-foreground: #606060;
+  --accent: #6f665c;
+  --accent-foreground: #ffffff;
+  --destructive: #b42318;
+  --border: #e5e5e5;
+  --input: #d4d4d4;
+  --ring: #0a0a0a;
   --success: #2f6f4e;
   --success-foreground: #f8fff9;
-  --warning: #8c5a15;
-  --warning-foreground: #fffaf0;
-  --error: #b3261e;
-  --error-foreground: #fff8f6;
-  --surface: #f7f4ee;
-  --surface-elevated: #fffdf8;
-  --surface-subtle: #eee8de;
-  --radius: 0.55rem;
-  --elevation-sm: 0 1px 0 rgba(17, 16, 14, 0.05), 0 8px 22px rgba(17, 16, 14, 0.04);
-  --elevation-md: 0 1px 0 rgba(17, 16, 14, 0.06), 0 18px 44px rgba(17, 16, 14, 0.07);
-  --elevation-lg: 0 1px 0 rgba(17, 16, 14, 0.08), 0 28px 70px rgba(17, 16, 14, 0.1);
+  --warning: #6f665c;
+  --warning-foreground: #ffffff;
+  --error: #b42318;
+  --error-foreground: #ffffff;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --surface-subtle: #f7f7f5;
+  --radius: 0.45rem;
+  --elevation-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --elevation-md: 0 8px 24px rgba(0, 0, 0, 0.055);
+  --elevation-lg: 0 18px 44px rgba(0, 0, 0, 0.08);
 }
 
 .dark {
   color-scheme: dark;
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #111111;
+  --card-foreground: #fafafa;
+  --popover: #111111;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #0a0a0a;
+  --secondary: #1f1f1f;
+  --secondary-foreground: #fafafa;
+  --muted: #1f1f1f;
+  --muted-foreground: #a3a3a3;
+  --accent: #a69c91;
+  --accent-foreground: #0a0a0a;
+  --destructive: #f97066;
+  --border: rgba(255, 255, 255, 0.14);
+  --input: rgba(255, 255, 255, 0.18);
+  --ring: #fafafa;
 }
 
 @layer base {
@@ -133,8 +135,12 @@
   h1,
   h2,
   h3 {
-    font-family: "Geist Variable", system-ui, sans-serif;
+    font-family: "Be Vietnam Pro", Inter, system-ui, sans-serif;
     letter-spacing: 0;
+  }
+
+  .font-editorial {
+    font-family: "Playfair Display", Georgia, serif;
   }
 }
 
@@ -150,7 +156,7 @@
   inset-block: 0;
   left: 0;
   width: 4px;
-  background: #3b82f6;
+  background: #6f665c;
 }
 
 .woodspec-toast[data-type="success"]::before {
@@ -166,7 +172,7 @@
 }
 
 .woodspec-toast[data-type="info"]::before {
-  background: #3b82f6;
+  background: #6f665c;
 }
 
 @keyframes reveal-up {
@@ -220,8 +226,8 @@
     inset: 0 auto auto 0;
     width: 100%;
     background: #ffffff;
-    color: #231a11;
-    font-family: "Geist Variable", system-ui, sans-serif;
+    color: #0a0a0a;
+    font-family: "Be Vietnam Pro", Inter, system-ui, sans-serif;
   }
 
   .woodspec-print-document {
@@ -237,7 +243,7 @@
     grid-template-columns: minmax(0, 1fr) 52mm;
     gap: 10mm;
     padding-bottom: 8mm;
-    border-bottom: 1px solid #d7c3b5;
+    border-bottom: 1px solid #d4d4d4;
   }
 
   .woodspec-print-header h1 {
@@ -250,12 +256,12 @@
   .woodspec-print-section p,
   .woodspec-print-requirement p {
     margin: 0;
-    color: #52443a;
+    color: #525252;
   }
 
   .woodspec-print-kicker {
     margin: 0;
-    color: #a35c36 !important;
+    color: #6f665c !important;
     font-size: 8pt;
     font-weight: 800;
     letter-spacing: 0.12em;
@@ -267,14 +273,14 @@
     gap: 1.5mm;
     align-content: start;
     padding: 5mm;
-    border: 1px solid #d7c3b5;
+    border: 1px solid #d4d4d4;
     border-radius: 5mm;
-    background: #fffaf6;
+    background: #fafafa;
   }
 
   .woodspec-print-meta span,
   .woodspec-print-list dt {
-    color: #847468;
+    color: #737373;
     font-size: 8pt;
     font-weight: 700;
     text-transform: uppercase;
@@ -296,7 +302,7 @@
   .woodspec-print-card,
   .woodspec-print-section {
     break-inside: avoid;
-    border: 1px solid #d7c3b5;
+    border: 1px solid #d4d4d4;
     border-radius: 5mm;
     padding: 5mm;
     background: #ffffff;
@@ -318,7 +324,7 @@
     display: grid;
     gap: 1mm;
     padding-bottom: 3mm;
-    border-bottom: 1px solid #ead8ca;
+    border-bottom: 1px solid #e5e5e5;
   }
 
   .woodspec-print-list div:last-child {
@@ -342,7 +348,7 @@
   .woodspec-print-table {
     overflow: hidden;
     margin-top: 4mm;
-    border: 1px solid #ead8ca;
+    border: 1px solid #e5e5e5;
     border-radius: 4mm;
   }
 
@@ -354,7 +360,7 @@
   .woodspec-print-table th,
   .woodspec-print-table td {
     padding: 2.6mm 3mm;
-    border-bottom: 1px solid #ead8ca;
+    border-bottom: 1px solid #e5e5e5;
     vertical-align: top;
     text-align: left;
   }
@@ -366,8 +372,8 @@
 
   .woodspec-print-table th {
     width: 48mm;
-    background: #fff1e8;
-    color: #735b2d;
+    background: #f7f7f5;
+    color: #525252;
     font-weight: 800;
   }
 
@@ -381,9 +387,9 @@
   .woodspec-print-requirement {
     break-inside: avoid;
     padding: 4mm;
-    border: 1px solid #ead8ca;
+    border: 1px solid #e5e5e5;
     border-radius: 4mm;
-    background: #fffaf6;
+    background: #fafafa;
   }
 
   .woodspec-print-requirement h3 {
@@ -408,7 +414,7 @@
 
   .woodspec-print-signatures div {
     min-height: 26mm;
-    border-top: 1px solid #231a11;
+    border-top: 1px solid #0a0a0a;
     padding-top: 2mm;
     text-align: center;
     font-weight: 700;

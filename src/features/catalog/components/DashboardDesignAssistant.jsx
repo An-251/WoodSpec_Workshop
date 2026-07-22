@@ -353,25 +353,25 @@ function DashboardDesignAssistant({ prompt, onPromptChange, configuratorPath, on
 
   return (
     <section className="space-y-5">
-      <article className="overflow-hidden rounded-xl border border-[#ead8ca] bg-white shadow-[0_4px_20px_rgba(43,33,24,0.08)]">
-        <div className="border-b border-[#ead8ca] bg-[#fffaf6] px-5 py-4">
+      <article className="overflow-hidden rounded-xl border border-[#e5e5e5] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+        <div className="border-b border-[#e5e5e5] bg-[#fafafa] px-5 py-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <p className="inline-flex items-center gap-2 rounded-lg border border-[#ead8ca] bg-white px-3 py-2 text-sm font-semibold text-[#735b2d]">
+              <p className="inline-flex items-center gap-2 rounded-lg border border-[#e5e5e5] bg-white px-3 py-2 text-sm font-semibold text-[#525252]">
                 <Bot className="size-4" />
                 Trợ lý thiết kế
               </p>
-              <h1 className="mt-3 max-w-4xl text-3xl font-semibold tracking-[-0.01em] text-[#231a11] md:text-4xl">
+              <h1 className="mt-3 max-w-4xl text-3xl font-semibold tracking-[-0.01em] text-[#0a0a0a] md:text-4xl">
                 WoodSpec biến ý tưởng nội thất gỗ thành thiết kế sẵn sàng báo giá.
               </h1>
-              <p className="mt-2 max-w-3xl text-sm leading-7 text-[#52443a]">
+              <p className="mt-2 max-w-3xl text-sm leading-7 text-[#525252]">
                 Trò chuyện tự nhiên với trợ lý, nhận mẫu phù hợp và tinh chỉnh trực tiếp trên mô hình 3D.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="min-h-[520px] bg-[#fbf8f3]">
+        <div className="min-h-[520px] bg-[#fafafa]">
           <div className="flex min-h-[520px] flex-col">
             <div className="flex-1 space-y-4 overflow-y-auto px-5 py-5">
               {messages.map((message) => (
@@ -379,18 +379,18 @@ function DashboardDesignAssistant({ prompt, onPromptChange, configuratorPath, on
                   <div
                     className={`max-w-[82%] rounded-2xl px-4 py-3 text-sm leading-6 shadow-sm ${
                       message.role === "user"
-                        ? "rounded-br-sm bg-[#854f19] text-white"
-                        : "rounded-bl-sm border border-[#ead8ca] bg-white text-[#352820]"
+                        ? "rounded-br-sm bg-[#0a0a0a] text-white"
+                        : "rounded-bl-sm border border-[#e5e5e5] bg-white text-[#171717]"
                     }`}
                   >
                     <p>{message.text}</p>
                     {message.hint && (
-                      <p className={`mt-2 text-xs ${message.role === "user" ? "text-white/80" : "text-[#847468]"}`}>
+                      <p className={`mt-2 text-xs ${message.role === "user" ? "text-white/80" : "text-[#737373]"}`}>
                         {message.hint}
                       </p>
                     )}
                     {message.done && (
-                      <p className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-[#854f19]">
+                      <p className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-[#6f665c]">
                         <CheckCircle2 className="size-3" />
                         Đã có mẫu đề xuất
                       </p>
@@ -400,7 +400,7 @@ function DashboardDesignAssistant({ prompt, onPromptChange, configuratorPath, on
               ))}
               {isThinking && (
                 <div className="flex justify-start">
-                  <div className="rounded-2xl rounded-bl-sm border border-[#ead8ca] bg-white px-4 py-3 text-sm font-semibold text-[#735b2d] shadow-sm">
+                  <div className="rounded-2xl rounded-bl-sm border border-[#e5e5e5] bg-white px-4 py-3 text-sm font-semibold text-[#525252] shadow-sm">
                     Đang suy nghĩ...
                   </div>
                 </div>
@@ -408,21 +408,21 @@ function DashboardDesignAssistant({ prompt, onPromptChange, configuratorPath, on
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="border-t border-[#ead8ca] bg-white p-4">
+            <div className="border-t border-[#e5e5e5] bg-white p-4">
               <div className="flex flex-col gap-3 md:flex-row md:items-end">
                 <textarea
                   value={draft}
                   onChange={(event) => setDraft(event.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="min-h-16 flex-1 resize-none rounded-xl border border-[#d7c3b5] bg-white px-4 py-3 text-sm leading-6 text-[#231a11] outline-none focus:border-[#854f19]"
+                  className="min-h-16 flex-1 resize-none rounded-xl border border-[#d4d4d4] bg-white px-4 py-3 text-sm leading-6 text-[#0a0a0a] outline-none focus:border-[#6f665c]"
                   placeholder="Ví dụ: Tôi cần tủ giày cho lối vào, để khoảng 20 đôi, có chỗ ngồi và nhìn kín gọn..."
                 />
                 <div className="flex gap-2">
-                  <Button type="button" variant="outline" onClick={startListening} className="border-[#d7c3b5] bg-white text-[#854f19]">
+                  <Button type="button" variant="outline" onClick={startListening} className="border-[#d4d4d4] bg-white text-[#6f665c]">
                     <Mic />
                     {isListening ? "Dừng" : "Nói"}
                   </Button>
-                  <Button type="button" onClick={handleSendMessage} disabled={!draft.trim() || isThinking} className="bg-[#854f19] hover:bg-[#7a4a22]">
+                  <Button type="button" onClick={handleSendMessage} disabled={!draft.trim() || isThinking} className="bg-[#0a0a0a] hover:bg-[#262626]">
                     <SendHorizontal />
                     Gửi
                   </Button>
@@ -430,9 +430,9 @@ function DashboardDesignAssistant({ prompt, onPromptChange, configuratorPath, on
               </div>
 
               <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <p className="min-h-5 text-xs font-semibold text-[#735b2d]">{statusMessage}</p>
+                <p className="min-h-5 text-xs font-semibold text-[#525252]">{statusMessage}</p>
                 <div className="flex flex-wrap gap-2">
-                  <Button type="button" variant="outline" onClick={handleResetInterview} className="border-[#d7c3b5] bg-white text-[#854f19]">
+                  <Button type="button" variant="outline" onClick={handleResetInterview} className="border-[#d4d4d4] bg-white text-[#6f665c]">
                     <RotateCcw />
                     Làm lại
                   </Button>
@@ -440,7 +440,7 @@ function DashboardDesignAssistant({ prompt, onPromptChange, configuratorPath, on
                     type="button"
                     onClick={() => finalizeConversation(messages)}
                     disabled={isThinking || userMessageCount === 0}
-                    className="bg-[#854f19] hover:bg-[#7a4a22]"
+                    className="bg-[#0a0a0a] hover:bg-[#262626]"
                   >
                     <Sparkles />
                     Tạo mẫu ngay
@@ -461,11 +461,11 @@ function DashboardDesignAssistant({ prompt, onPromptChange, configuratorPath, on
             const matchedText = matchedKeywords.length > 0 ? matchedKeywords.join(", ") : "Đề xuất theo nội dung trò chuyện"
 
             return (
-              <article key={suggestion.id} className={`overflow-hidden rounded-xl border bg-white shadow-[0_4px_20px_rgba(43,33,24,0.08)] ${index === 0 ? "border-[#854f19]" : "border-[#ead8ca]"}`}>
-                <div className="bg-[#fff1e8] p-4">
-                  <div className="relative h-56 overflow-hidden rounded-lg border border-[#ead8ca] bg-[#f3eee6]">
+              <article key={suggestion.id} className={`overflow-hidden rounded-xl border bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${index === 0 ? "border-[#6f665c]" : "border-[#e5e5e5]"}`}>
+                <div className="bg-[#f7f7f5] p-4">
+                  <div className="relative h-56 overflow-hidden rounded-lg border border-[#e5e5e5] bg-[#f5f5f4]">
                     <Cabinet3DCardPreview configuration={configuration} className="absolute inset-0 size-full" />
-                    <div className="absolute left-3 top-3 rounded-md border border-white/60 bg-white/90 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#735b2d] shadow-sm">
+                    <div className="absolute left-3 top-3 rounded-md border border-white/60 bg-white/90 px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#525252] shadow-sm">
                       {suggestion.generatedByAi ? "Đề xuất AI" : index === 0 ? "Phù hợp nhất" : `Gợi ý ${index + 1}`}
                     </div>
                   </div>
@@ -474,21 +474,21 @@ function DashboardDesignAssistant({ prompt, onPromptChange, configuratorPath, on
                 <div className="space-y-4 p-5">
                   <div>
                     <div className="flex items-center justify-between gap-3">
-                      <h2 className="text-xl font-semibold text-[#231a11]">{suggestion.label}</h2>
-                      <span className="rounded-full bg-[#fcdba1] px-3 py-1 text-xs font-bold text-[#735b2d]">
+                      <h2 className="text-xl font-semibold text-[#0a0a0a]">{suggestion.label}</h2>
+                      <span className="rounded-full bg-[#e8e5df] px-3 py-1 text-xs font-bold text-[#525252]">
                         {suggestion.generatedByAi ? "AI" : `${suggestion.confidence}%`}
                       </span>
                     </div>
-                    <p className="mt-2 text-sm leading-6 text-[#52443a]">{configuration.requestDetails?.usage ?? suggestion.requestDetails.usage}</p>
+                    <p className="mt-2 text-sm leading-6 text-[#525252]">{configuration.requestDetails?.usage ?? suggestion.requestDetails.usage}</p>
                   </div>
 
-                  <div className="rounded-lg bg-[#fffaf6] p-3 text-sm leading-6 text-[#735b2d]">
-                    <p className="font-semibold text-[#231a11]">{suggestion.generatedByAi ? "Tạo theo mô tả" : "Từ khóa khớp"}</p>
+                  <div className="rounded-lg bg-[#fafafa] p-3 text-sm leading-6 text-[#525252]">
+                    <p className="font-semibold text-[#0a0a0a]">{suggestion.generatedByAi ? "Tạo theo mô tả" : "Từ khóa khớp"}</p>
                     <p className="mt-1">{suggestion.generatedByAi ? "Gemini đã dựng mẫu riêng từ prompt chính." : matchedText}</p>
                   </div>
 
                   <Link to={configuratorPath} onClick={() => onApplySuggestion(suggestion, prompt)}>
-                    <Button className="w-full bg-[#854f19] hover:bg-[#7a4a22]">
+                    <Button className="w-full bg-[#0a0a0a] hover:bg-[#262626]">
                       <Wand2 />
                       Chọn và chỉnh chi tiết
                       <ArrowRight />
@@ -500,7 +500,7 @@ function DashboardDesignAssistant({ prompt, onPromptChange, configuratorPath, on
           })}
         </div>
       ) : (
-        <div className="rounded-xl border border-dashed border-[#d7c3b5] bg-[#fffaf6] px-5 py-6 text-sm leading-6 text-[#735b2d]">
+        <div className="rounded-xl border border-dashed border-[#d4d4d4] bg-[#fafafa] px-5 py-6 text-sm leading-6 text-[#525252]">
           Chưa hiển thị mẫu trước khi trò chuyện. Sau khi anh chị gửi đủ nhu cầu hoặc bấm “Tạo mẫu ngay”, mẫu phù hợp sẽ tự hiện ra.
         </div>
       )}

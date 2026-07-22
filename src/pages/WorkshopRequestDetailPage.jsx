@@ -1,4 +1,4 @@
-import { ArrowRight, Download, MessageCircle, Send, ShieldCheck, ZoomIn } from "lucide-react"
+import { Download, FileText, MessageSquare, Send, ShieldCheck, ZoomIn } from "lucide-react"
 import { useRef, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
@@ -72,15 +72,15 @@ function WorkshopRequestDetailPage() {
                 to={ROUTES.workshopQuotation(request.id)}
                 className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 font-semibold text-primary-foreground shadow-gallery-sm transition duration-200 hover:bg-foreground"
               >
-                Chuẩn bị báo giá
-                <ArrowRight className="size-4" />
+                <FileText className="size-4" />
+                Báo giá
               </Link>
               <button
                 type="button"
                 onClick={openCustomerChat}
                 className="inline-flex h-11 items-center gap-2 rounded-full border border-border bg-card px-5 font-medium text-foreground transition duration-200 hover:border-primary/35 hover:bg-muted"
               >
-                <MessageCircle className="size-4" />
+                <MessageSquare className="size-4" />
                 Hỏi khách
               </button>
             </div>
@@ -90,8 +90,8 @@ function WorkshopRequestDetailPage() {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h3 className="flex items-center gap-2 text-xl font-bold text-foreground">
-                  <MessageCircle className="size-5 text-primary" />
-                  Hỏi khách hàng
+                  <MessageSquare className="size-5 text-primary" />
+                  Hỏi khách
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Trao đổi nhanh để làm rõ vật liệu, kích thước, thời gian hoặc điều kiện lắp đặt trước khi báo giá.
@@ -199,7 +199,7 @@ function WorkshopRequestDetailPage() {
                 <path d="M140 95h620l-42 44H182z" fill="#f2e8dc" stroke="#bfa990" strokeWidth="5" />
                 <path d="M185 139h34v155h-34zM686 139h34v155h-34zM292 139h22v115h-22zM590 139h22v115h-22z" fill="#d9d1c7" />
                 <path d="M230 188h430v18H230z" fill="#aeb5b6" />
-                <path d="M180 294h45M682 294h45" stroke="#8a7666" strokeWidth="6" strokeLinecap="round" />
+                <path d="M180 294h45M682 294h45" stroke="#737373" strokeWidth="6" strokeLinecap="round" />
               </svg>
             </div>
             <div className="mt-4 flex flex-wrap gap-2">

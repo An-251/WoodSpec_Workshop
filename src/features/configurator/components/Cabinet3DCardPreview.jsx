@@ -3,7 +3,7 @@ function clamp(value, min, max) {
 }
 
 function normalizeColor(hex) {
-  return typeof hex === "string" && /^#[0-9a-f]{6}$/i.test(hex) ? hex : "#c99d5a"
+  return typeof hex === "string" && /^#[0-9a-f]{6}$/i.test(hex) ? hex : "#a69c91"
 }
 
 function getDarkerColor(hex) {
@@ -37,10 +37,10 @@ function Cabinet3DCardPreview({ configuration, className = "" }) {
 
   return (
     <div className={`relative overflow-hidden bg-[#efe9df] ${className}`} aria-label={`Mô hình 3D ${configuration.productName}`}>
-      <div className="absolute inset-x-8 bottom-8 h-8 rounded-full bg-[#2b2118]/12 blur-xl" />
+      <div className="absolute inset-x-8 bottom-8 h-8 rounded-full bg-[#171717]/12 blur-xl" />
       <div className="absolute left-1/2 top-1/2 h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 [perspective:900px]">
         <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center [transform-style:preserve-3d] [transform:rotateX(8deg)_rotateY(-24deg)]" style={frontStyle}>
-          <div className="absolute inset-0 rounded-md border-[5px] border-[var(--edge-color)] bg-[linear-gradient(135deg,rgba(255,255,255,0.4),var(--body-color)_44%,rgba(74,42,18,0.24))] shadow-[0_18px_32px_rgba(43,33,24,0.22)] [transform:translateZ(var(--depth))]">
+          <div className="absolute inset-0 rounded-md border-[5px] border-[var(--edge-color)] bg-[linear-gradient(135deg,rgba(255,255,255,0.4),var(--body-color)_44%,rgba(74,42,18,0.24))] shadow-[0_18px_32px_rgba(0,0,0,0.10)] [transform:translateZ(var(--depth))]">
             {!isDesk && (
               <div className="grid h-full w-full gap-[3px] p-[10px]" style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`, gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))` }}>
                 {Array.from({ length: columns * rows }).map((_, index) => (

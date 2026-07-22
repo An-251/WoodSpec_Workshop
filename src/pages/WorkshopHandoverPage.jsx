@@ -1,4 +1,4 @@
-﻿import { ArrowRight, PackageCheck, Truck } from "lucide-react"
+import { ArrowRight, PackageCheck, Truck } from "lucide-react"
 import { Link } from "react-router-dom"
 
 import { ROUTES } from "@/constants/routes"
@@ -16,8 +16,8 @@ function WorkshopHandoverPage() {
       <WorkshopPageHeader title="Bàn giao & hoàn tất" subtitle="Các dự án đã xong hoặc sẵn sàng rời xưởng." />
 
       <section>
-        <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-[#1f140c]">
-          <Truck className="size-5 text-[#82461c]" />
+        <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-[#0a0a0a]">
+          <Truck className="size-5 text-[#6f665c]" />
           Sẵn sàng bàn giao
         </h2>
         <WorkshopCard className="overflow-hidden">
@@ -26,26 +26,26 @@ function WorkshopHandoverPage() {
               <Link
                 key={project.id}
                 to={ROUTES.workshopHandoverDetail(project.id)}
-                className="flex items-center gap-4 p-5 transition hover:bg-[#fff8ef]"
+                className="flex items-center gap-4 p-5 transition hover:bg-[#f7f7f5]"
               >
                 <Thumbnail label={project.customer} tone="green" />
                 <div className="min-w-0 flex-1">
-                  <p className="font-semibold text-[#1f140c]">{project.customer}</p>
-                  <p className="text-sm text-[#654f40]">
+                  <p className="font-semibold text-[#0a0a0a]">{project.customer}</p>
+                  <p className="text-sm text-[#525252]">
                     {project.product} · {project.reference}
                   </p>
                 </div>
-                <ArrowRight className="size-5 text-[#82461c]" />
+                <ArrowRight className="size-5 text-[#6f665c]" />
               </Link>
             ))
           ) : (
-            <p className="p-8 text-center text-[#7b6250]">Hiện chưa có đơn nào cần bàn giao.</p>
+            <p className="p-8 text-center text-[#737373]">Hiện chưa có đơn nào cần bàn giao.</p>
           )}
         </WorkshopCard>
       </section>
 
       <section>
-        <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-[#1f140c]">
+        <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-[#0a0a0a]">
           <PackageCheck className="size-5 text-[#4aa064]" />
           Vừa hoàn tất
         </h2>
@@ -54,8 +54,8 @@ function WorkshopHandoverPage() {
             <div key={project.id} className="flex items-center gap-4 p-5">
               <Thumbnail label={project.customer} tone="neutral" />
               <div className="min-w-0 flex-1">
-                <p className="font-semibold text-[#1f140c]">{project.customer}</p>
-                <p className="text-sm text-[#654f40]">
+                <p className="font-semibold text-[#0a0a0a]">{project.customer}</p>
+                <p className="text-sm text-[#525252]">
                   {project.item} · {project.completedAt || "vừa hoàn tất"}
                 </p>
               </div>

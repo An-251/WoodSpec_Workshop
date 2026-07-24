@@ -1,4 +1,5 @@
-import { ArrowRight, CheckCircle2, Send } from "lucide-react"
+import { ArrowRight, CheckCircle2, Plus, Send, Trash2 } from "lucide-react"
+import { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import { ROUTES } from "@/constants/routes"
@@ -6,11 +7,11 @@ import { WorkflowSteps, WorkshopCard, WorkshopPageHeader } from "@/features/work
 import { FLOW_STATUS, getFlowItem, useWorkshopFlowStore } from "@/stores/useWorkshopFlowStore"
 import { formatVND } from "@/utils/currency"
 
-const lineItems = [
-  ["Thi công sản phẩm chính", 1, 35_000_000],
-  ["Vật liệu gỗ sồi FSC", 1, 10_000_000],
-  ["Hoàn thiện bề mặt", 1, 5_000_000],
-  ["Giao hàng & lắp đặt", 1, 3_750_000],
+const initialLineItems = [
+  { id: "main-product", label: "Thi công sản phẩm chính", quantity: 1, price: 35_000_000 },
+  { id: "material", label: "Vật liệu gỗ sồi FSC", quantity: 1, price: 10_000_000 },
+  { id: "finish", label: "Hoàn thiện bề mặt", quantity: 1, price: 5_000_000 },
+  { id: "delivery", label: "Giao hàng & lắp đặt", quantity: 1, price: 3_750_000 },
 ]
 
 function WorkshopQuotationPage() {
@@ -19,8 +20,9 @@ function WorkshopQuotationPage() {
   const statusById = useWorkshopFlowStore((state) => state.statusById)
   const submitQuotation = useWorkshopFlowStore((state) => state.submitQuotation)
   const markCustomerSelected = useWorkshopFlowStore((state) => state.markCustomerSelected)
+  const [lineItems, setLineItems] = useState(initialLineItems)
   const request = getFlowItem(requestId, statusById)
-  const total = lineItems.reduce((sum, [, qty, price]) => sum + qty * price, 0)
+  const total = lineItems.reduce((sum, item) => sum + item.quantity * item.price, 0)
   const deposit = Math.round(total * 0.5)
   const isAwaiting = request.flowStatus === FLOW_STATUS.awaiting
   const isSelected = ![FLOW_STATUS.open, FLOW_STATUS.awaiting].includes(request.flowStatus)
@@ -32,6 +34,35 @@ function WorkshopQuotationPage() {
   function handleCustomerSelected() {
     markCustomerSelected(request.id)
     navigate(ROUTES.workshopBuildDetail(request.id))
+  }
+
+  function addLineItem() {
+    setLineItems((current) => [
+      ...current,
+      {
+        id: `cost-${Date.now()}`,
+        label: "",
+        quantity: 1,
+        price: 0,
+      },
+    ])
+  }
+
+  function updateLineItem(itemId, field, value) {
+    setLineItems((current) =>
+      current.map((item) =>
+        item.id === itemId
+          ? {
+              ...item,
+              [field]: field === "label" ? value : Math.max(0, Number(value) || 0),
+            }
+          : item,
+      ),
+    )
+  }
+
+  function removeLineItem(itemId) {
+    setLineItems((current) => current.filter((item) => item.id !== itemId))
   }
 
   return (
@@ -82,22 +113,67 @@ function WorkshopQuotationPage() {
 
           <WorkshopCard className="p-6">
             <h3 className="text-xl font-bold text-foreground">Các dòng chi phí</h3>
-            <div className="mt-5 overflow-hidden rounded-lg border border-border">
-              <div className="grid grid-cols-[minmax(0,1fr)_90px_160px_160px] bg-muted px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <div className="mt-5 overflow-x-auto rounded-lg border border-border">
+              <div className="grid min-w-[760px] grid-cols-[minmax(220px,1fr)_90px_160px_160px_44px] bg-muted px-4 py-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                 <span>Mô tả</span>
                 <span>Số lượng</span>
                 <span>Đơn giá</span>
                 <span className="text-right">Thành tiền</span>
+                <span className="sr-only">Thao tác</span>
               </div>
-              {lineItems.map(([label, qty, price]) => (
-                <div key={label} className="grid grid-cols-[minmax(0,1fr)_90px_160px_160px] border-t border-border px-4 py-4">
-                  <span className="font-medium">{label}</span>
-                  <span>{qty}</span>
-                  <span>{formatVND(price)}</span>
-                  <span className="text-right font-semibold">{formatVND(qty * price)}</span>
+              {lineItems.map((item) => (
+                <div key={item.id} className="grid min-w-[760px] grid-cols-[minmax(220px,1fr)_90px_160px_160px_44px] items-center border-t border-border px-4 py-3">
+                  <input
+                    type="text"
+                    value={item.label}
+                    onChange={(event) => updateLineItem(item.id, "label", event.target.value)}
+                    placeholder="Nhập mô tả chi phí"
+                    aria-label="Mô tả chi phí"
+                    readOnly={isAwaiting || isSelected}
+                    className="mr-3 h-9 min-w-0 rounded-md border border-input bg-card px-3 text-sm font-medium outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/30 read-only:border-transparent read-only:px-0 read-only:focus:ring-0"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    step="1"
+                    value={item.quantity}
+                    onChange={(event) => updateLineItem(item.id, "quantity", event.target.value)}
+                    aria-label={`Số lượng ${item.label || "dòng chi phí"}`}
+                    readOnly={isAwaiting || isSelected}
+                    className="h-9 w-16 rounded-md border border-input bg-card px-2 text-sm outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/30 read-only:border-transparent read-only:px-0 read-only:focus:ring-0"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    step="1000"
+                    value={item.price}
+                    onChange={(event) => updateLineItem(item.id, "price", event.target.value)}
+                    aria-label={`Đơn giá ${item.label || "dòng chi phí"}`}
+                    readOnly={isAwaiting || isSelected}
+                    className="h-9 w-36 rounded-md border border-input bg-card px-3 text-sm outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/30 read-only:border-transparent read-only:px-0 read-only:focus:ring-0"
+                  />
+                  <span className="text-right font-semibold">{formatVND(item.quantity * item.price)}</span>
+                  <button
+                    type="button"
+                    onClick={() => removeLineItem(item.id)}
+                    disabled={isAwaiting || isSelected}
+                    aria-label={`Xóa ${item.label || "dòng chi phí"}`}
+                    title="Xóa dòng chi phí"
+                    className="ml-auto flex size-8 items-center justify-center rounded-md text-muted-foreground transition hover:bg-destructive/10 hover:text-destructive disabled:pointer-events-none disabled:opacity-30"
+                  >
+                    <Trash2 className="size-4" />
+                  </button>
                 </div>
               ))}
-              <button className="w-full border-t border-border py-3 text-sm font-medium text-primary transition duration-200 hover:bg-muted">+ Thêm dòng chi phí</button>
+              <button
+                type="button"
+                onClick={addLineItem}
+                disabled={isAwaiting || isSelected}
+                className="flex w-full min-w-[760px] items-center justify-center gap-2 border-t border-border py-3 text-sm font-semibold text-primary transition duration-200 hover:bg-muted disabled:cursor-not-allowed disabled:text-muted-foreground"
+              >
+                <Plus className="size-4" />
+                {isAwaiting || isSelected ? "Báo giá đã khóa" : "Thêm dòng chi phí"}
+              </button>
             </div>
 
             <div className="mt-5 grid gap-3 md:grid-cols-3">

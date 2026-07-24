@@ -73,6 +73,18 @@ export const openRequests = [
       ["Phụ kiện", "Không lộ"],
       ["Yêu cầu", "Hoàn thiện an toàn cho trẻ, phải vừa thang máy hẹp"],
     ],
+    blueprint: {
+      drawingNumber: "WS-1042-BP",
+      revision: "R02",
+      scale: "1:20",
+      updatedAt: "24/07/2026",
+      notes: [
+        "Mặt bàn gỗ sồi nguyên khối dày 40 mm, giữ cạnh tự nhiên ở hai cạnh dài.",
+        "Chân bàn tiết diện 70 x 70 mm, liên kết mộng âm và giằng dọc.",
+        "Bo cạnh R5, xử lý bề mặt an toàn khi sử dụng trong gia đình có trẻ nhỏ.",
+        "Cụm dài nhất sau tháo rời không vượt quá 200 cm để vận chuyển bằng thang máy.",
+      ],
+    },
     attachments: ["Ảnh cảm hứng.jpg", "Kích thước phòng.pdf"],
   },
   {
@@ -110,6 +122,18 @@ export const openRequests = [
       ["Hoàn thiện", "PU mờ chống trầy"],
       ["Yêu cầu", "Dễ vệ sinh, phù hợp sử dụng thương mại"],
     ],
+    blueprint: {
+      drawingNumber: "WS-1041-BP",
+      revision: "R01",
+      scale: "1:10",
+      updatedAt: "23/07/2026",
+      notes: [
+        "Khung ghế gỗ óc chó Mỹ, liên kết mộng, gia cường cho tần suất sử dụng cao.",
+        "Mặt ngồi tháo rời để vệ sinh; giữ khe hở 4 mm quanh đệm.",
+        "Bo cạnh R3 tại toàn bộ vị trí người dùng tiếp xúc.",
+        "Kiểm tra tải tĩnh và độ cân bằng trước khi hoàn thiện PU mờ.",
+      ],
+    },
     attachments: ["Moodboard quán.jpg", "Mặt bằng.pdf"],
   },
 ]

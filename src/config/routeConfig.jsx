@@ -8,6 +8,7 @@ import RegisterPage from "@/pages/RegisterPage"
 import SpecReviewPage from "@/pages/SpecReviewPage"
 import WorkshopBuildDetailPage from "@/pages/WorkshopBuildDetailPage"
 import WorkshopBuildsPage from "@/pages/WorkshopBuildsPage"
+import WorkshopBlueprintPage from "@/pages/WorkshopBlueprintPage"
 import WorkshopHandoverDetailPage from "@/pages/WorkshopHandoverDetailPage"
 import WorkshopHandoverPage from "@/pages/WorkshopHandoverPage"
 import WorkshopQuotationPage from "@/pages/WorkshopQuotationPage"
@@ -24,6 +25,7 @@ export const protectedRoutes = [
   { path: "dashboard", element: <DashboardPage /> },
   { path: "app/requests", element: <WorkshopRequestsPage /> },
   { path: "app/requests/:requestId", element: <WorkshopRequestDetailPage /> },
+  { path: "app/requests/:requestId/blueprint", element: <WorkshopBlueprintPage /> },
   { path: "app/requests/:requestId/quote", element: <WorkshopQuotationPage /> },
   { path: "app/builds", element: <WorkshopBuildsPage /> },
   { path: "app/builds/:projectId", element: <WorkshopBuildDetailPage /> },

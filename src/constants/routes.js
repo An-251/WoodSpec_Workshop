@@ -5,6 +5,7 @@ export const ROUTES = {
   dashboard: "/dashboard",
   workshopRequests: "/app/requests",
   workshopRequestDetail: (requestId = ":requestId") => `/app/requests/${requestId}`,
+  workshopBlueprint: (requestId = ":requestId") => `/app/requests/${requestId}/blueprint`,
   workshopQuotation: (requestId = ":requestId") => `/app/requests/${requestId}/quote`,
   workshopBuilds: "/app/builds",
   workshopBuildDetail: (projectId = ":projectId") => `/app/builds/${projectId}`,

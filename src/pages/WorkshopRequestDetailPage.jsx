@@ -1,9 +1,10 @@
-import { Download, FileText, MessageSquare, ShieldCheck, ZoomIn } from "lucide-react"
+import { FileText, Maximize2, MessageSquare, ShieldCheck } from "lucide-react"
 import { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
 import { ROUTES } from "@/constants/routes"
 import { getOpenRequest } from "@/data/reference/workshopFlow"
+import { BlueprintDrawing } from "@/features/workshop/components/BlueprintViewer"
 import { FieldGrid, StatusPill, WorkflowSteps, WorkshopCard, WorkshopPageHeader } from "@/features/workshop/components/WorkshopUI"
 import CustomerChatDialog from "@/features/workshop/components/CustomerChatDialog"
 
@@ -79,25 +80,29 @@ function WorkshopRequestDetailPage() {
                 <h3 className="text-xl font-bold text-foreground">2. Bản vẽ kỹ thuật</h3>
                 <p className="mt-1 text-sm text-muted-foreground">Tài liệu quan trọng nhất để lập báo giá.</p>
               </div>
-              <div className="flex gap-2">
-                <button className="inline-flex h-9 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm transition duration-200 hover:border-primary/35 hover:bg-muted">
-                  <ZoomIn className="size-4" />
-                  Phóng to
-                </button>
-                <button className="inline-flex h-9 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm transition duration-200 hover:border-primary/35 hover:bg-muted">
-                  <Download className="size-4" />
-                  Tải xuống
-                </button>
-              </div>
+              <Link
+                to={ROUTES.workshopBlueprint(request.id)}
+                className="inline-flex h-9 shrink-0 items-center gap-2 rounded-lg border border-border bg-card px-3 text-sm font-semibold transition duration-200 hover:border-primary/35 hover:bg-muted"
+              >
+                <Maximize2 className="size-4" />
+                Mở Blueprint
+              </Link>
             </div>
-            <div className="mt-4 overflow-hidden rounded-lg border border-border bg-[#cfe1e8]">
-              <svg viewBox="0 0 900 330" className="h-[260px] w-full">
-                <rect width="900" height="330" fill="#cfe1e8" />
-                <path d="M140 95h620l-42 44H182z" fill="#f2e8dc" stroke="#bfa990" strokeWidth="5" />
-                <path d="M185 139h34v155h-34zM686 139h34v155h-34zM292 139h22v115h-22zM590 139h22v115h-22z" fill="#d9d1c7" />
-                <path d="M230 188h430v18H230z" fill="#aeb5b6" />
-                <path d="M180 294h45M682 294h45" stroke="#737373" strokeWidth="6" strokeLinecap="round" />
-              </svg>
+            <Link
+              to={ROUTES.workshopBlueprint(request.id)}
+              className="mt-4 block aspect-[20/9] min-h-[220px] overflow-hidden rounded-lg border border-[#b8cac9] bg-[#fffdf9] transition hover:border-primary/50"
+              aria-label={`Mở Blueprint ${request.reference}`}
+            >
+              <BlueprintDrawing
+                request={request}
+                view="front"
+                showNotes={false}
+                className="size-full object-contain"
+              />
+            </Link>
+            <div className="mt-3 flex items-center justify-between gap-3 text-xs text-muted-foreground">
+              <span>{request.blueprint?.drawingNumber || `${request.reference}-BP`}</span>
+              <span>Bản sửa {request.blueprint?.revision || "R01"} · Tỉ lệ {request.blueprint?.scale || "1:20"}</span>
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
               {request.dimensions.split(" x ").map((part, index) => (

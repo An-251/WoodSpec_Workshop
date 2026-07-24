@@ -260,3 +260,53 @@ export function BlueprintDrawing({
     </svg>
   )
 }
+
+export function BlueprintExportSheet({
+  request,
+  showGrid = true,
+  showDimensions = true,
+  showNotes = true,
+  svgRef,
+}) {
+  return (
+    <svg
+      ref={svgRef}
+      xmlns="http://www.w3.org/2000/svg"
+      width="2000"
+      height="1300"
+      viewBox="0 0 2000 1300"
+      role="img"
+      aria-label={`Bộ bản vẽ ba mặt của ${request.product}`}
+      style={{ fontFamily: "Arial, sans-serif" }}
+    >
+      <rect width="2000" height="1300" fill="#e8eeec" />
+      <BlueprintDrawing
+        request={request}
+        view="front"
+        showGrid={showGrid}
+        showDimensions={showDimensions}
+        showNotes={showNotes}
+      />
+      <g transform="translate(1000 0)">
+        <BlueprintDrawing
+          request={request}
+          view="top"
+          showGrid={showGrid}
+          showDimensions={showDimensions}
+          showNotes={showNotes}
+        />
+      </g>
+      <g transform="translate(500 650)">
+        <BlueprintDrawing
+          request={request}
+          view="side"
+          showGrid={showGrid}
+          showDimensions={showDimensions}
+          showNotes={showNotes}
+        />
+      </g>
+      <path d="M1000 0V650M0 650H2000" fill="none" stroke="#164e5a" strokeOpacity=".35" strokeWidth="2" />
+      <rect x="1" y="1" width="1998" height="1298" fill="none" stroke="#164e5a" strokeWidth="2" />
+    </svg>
+  )
+}

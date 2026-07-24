@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { ROUTES } from "@/constants/routes"
 import { getOpenRequest } from "@/data/reference/workshopFlow"
-import { BlueprintDrawing } from "@/features/workshop/components/BlueprintViewer"
+import { BlueprintDrawing, BlueprintExportSheet } from "@/features/workshop/components/BlueprintViewer"
 import { getBlueprintDimensions } from "@/features/workshop/utils/blueprint"
 
 const views = [
@@ -34,7 +34,7 @@ function WorkshopBlueprintPage() {
   const [showNotes, setShowNotes] = useState(true)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const viewerRef = useRef(null)
-  const svgRef = useRef(null)
+  const exportSvgRef = useRef(null)
   const blueprint = request.blueprint || {}
 
   useEffect(() => {
@@ -60,16 +60,16 @@ function WorkshopBlueprintPage() {
   }
 
   function downloadSvg() {
-    if (!svgRef.current) return
+    if (!exportSvgRef.current) return
 
-    const source = new XMLSerializer().serializeToString(svgRef.current)
+    const source = new XMLSerializer().serializeToString(exportSvgRef.current)
     const blob = new Blob([`<?xml version="1.0" encoding="UTF-8"?>\n${source}`], {
       type: "image/svg+xml;charset=utf-8",
     })
     const url = URL.createObjectURL(blob)
     const anchor = document.createElement("a")
     anchor.href = url
-    anchor.download = `${request.reference}-${activeView}.svg`
+    anchor.download = `${request.reference}-blueprint-3-mat.svg`
     document.body.appendChild(anchor)
     anchor.click()
     anchor.remove()
@@ -207,7 +207,6 @@ function WorkshopBlueprintPage() {
                 showGrid={showGrid}
                 showDimensions={showDimensions}
                 showNotes={showNotes}
-                svgRef={svgRef}
                 className="block size-full"
               />
             </div>
@@ -268,6 +267,16 @@ function WorkshopBlueprintPage() {
             </p>
           </div>
         </aside>
+      </div>
+
+      <div className="pointer-events-none fixed left-[-10000px] top-0" aria-hidden="true">
+        <BlueprintExportSheet
+          request={request}
+          showGrid={showGrid}
+          showDimensions={showDimensions}
+          showNotes={showNotes}
+          svgRef={exportSvgRef}
+        />
       </div>
     </div>
   )
